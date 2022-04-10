@@ -78,6 +78,7 @@ function Navbar(props) {
             <ul className="flex flex-col justify-center items-center">
               <li className="border-b-2 border-b-red-300 w-1/2 text-center pb-5">
                 <Link
+                  onClick={() => setIsOpen(false)}
                   to="/"
                   className="text-center font-medium text-2xl text-gray-700"
                 >
@@ -86,6 +87,7 @@ function Navbar(props) {
               </li>
               <li className="border-b-2 border-b-red-300 w-1/2 text-center pb-5 mt-5">
                 <Link
+                  onClick={() => setIsOpen(false)}
                   to="/about"
                   className="text-center font-medium text-2xl text-gray-700"
                 >
@@ -94,6 +96,7 @@ function Navbar(props) {
               </li>
               <li className="border-b-2 border-b-red-300 w-1/2 text-center pb-5 mt-5">
                 <Link
+                  onClick={() => setIsOpen(false)}
                   to="/skills"
                   className="text-center font-medium text-2xl text-gray-700"
                 >
@@ -102,6 +105,7 @@ function Navbar(props) {
               </li>
               <li className="border-b-2 border-b-red-300 w-1/2 text-center pb-5 mt-5">
                 <Link
+                  onClick={() => setIsOpen(false)}
                   to="/experiences"
                   className="text-center font-medium text-2xl text-gray-700"
                 >
@@ -110,6 +114,7 @@ function Navbar(props) {
               </li>
               <li className="border-b-2 border-b-red-300 w-1/2 text-center pb-5 mt-5">
                 <Link
+                  onClick={() => setIsOpen(false)}
                   to="/protfolios"
                   className="text-center font-medium text-2xl text-gray-700"
                 >
@@ -118,6 +123,7 @@ function Navbar(props) {
               </li>
               <li className="border-b-2 border-b-red-300 w-1/2 text-center pb-5 mt-5">
                 <Link
+                  onClick={() => setIsOpen(false)}
                   to="/contact"
                   className="text-center font-medium text-2xl text-gray-700"
                 >
