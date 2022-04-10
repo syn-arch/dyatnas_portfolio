@@ -75,7 +75,7 @@ function Navbar(props) {
               </svg>
             </button>
             <div className="clear-both"></div>
-            <ul className="flex flex-col justify-center items-center">
+            <ul className="flex flex-col justify-center items-center mt-16">
               <li className="border-b-2 border-b-red-300 w-1/2 text-center pb-5">
                 <Link
                   onClick={() => setIsOpen(false)}

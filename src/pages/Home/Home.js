@@ -36,7 +36,7 @@ function Home(props) {
             <img
               src={Me}
               alt="me"
-              className="rounded-full w-64 h-64 border-8 border-gray-200"
+              className="rounded-full w-60 h-60 border-8 border-gray-200"
             />
           </div>
         </div>
