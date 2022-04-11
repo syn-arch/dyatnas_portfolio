@@ -130,7 +130,7 @@ function Skill(props) {
           </p>
         </div>
       </div>
-      <div className="h-5"></div>
+      <div className="h-10"></div>
     </div>
   );
 }
