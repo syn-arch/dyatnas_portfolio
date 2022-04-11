@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import HomeLayout from "../layout/Home/HomeLayout";
@@ -12,65 +12,63 @@ import Contact from "../pages/Home/Contact";
 function Main(props) {
   return (
     <BrowserRouter>
-      <Fragment>
-        <Routes>
-          <Route
-            path="/"
-            exact
-            element={
-              <HomeLayout>
-                <Home />
-              </HomeLayout>
-            }
-          />
-          <Route
-            path="/about"
-            exact
-            element={
-              <HomeLayout>
-                <About />
-              </HomeLayout>
-            }
-          />
-          <Route
-            path="/skills"
-            exact
-            element={
-              <HomeLayout>
-                <Skill />
-              </HomeLayout>
-            }
-          />
-          <Route
-            path="/experiences"
-            exact
-            element={
-              <HomeLayout>
-                <Experience />
-              </HomeLayout>
-            }
-          />
-          <Route
-            path="/portfolios"
-            exact
-            element={
-              <HomeLayout>
-                <Portfolio />
-              </HomeLayout>
-            }
-          />
-          <Route
-            path="/contact"
-            exact
-            element={
-              <HomeLayout>
-                <Contact />
-              </HomeLayout>
-            }
-          />
-          <Route path="*" element="404 Not Found" />
-        </Routes>
-      </Fragment>
+      <Routes>
+        <Route
+          path="/"
+          exact
+          element={
+            <HomeLayout>
+              <Home />
+            </HomeLayout>
+          }
+        />
+        <Route
+          path="/about"
+          exact
+          element={
+            <HomeLayout>
+              <About />
+            </HomeLayout>
+          }
+        />
+        <Route
+          path="/skills"
+          exact
+          element={
+            <HomeLayout>
+              <Skill />
+            </HomeLayout>
+          }
+        />
+        <Route
+          path="/experiences"
+          exact
+          element={
+            <HomeLayout>
+              <Experience />
+            </HomeLayout>
+          }
+        />
+        <Route
+          path="/portfolios"
+          exact
+          element={
+            <HomeLayout>
+              <Portfolio />
+            </HomeLayout>
+          }
+        />
+        <Route
+          path="/contact"
+          exact
+          element={
+            <HomeLayout>
+              <Contact />
+            </HomeLayout>
+          }
+        />
+        <Route path="*" element="404 Not Found" />
+      </Routes>
     </BrowserRouter>
   );
 }

@@ -5,7 +5,7 @@ function About(props) {
   return (
     <>
       <div className="flex flex-col md:flex-row w-3/4 mx-auto">
-        <div className="mt-10 md:mt-32">
+        <div className="mt-10 md:mt-32 lg:mt-48">
           <div className="rounded-full w-64 h-64 border-8 border-gray-200 mx-auto">
             <img
               src={Me}
@@ -14,11 +14,11 @@ function About(props) {
             />
           </div>
           <div className="text-center">
-            <h1 className="font-bold text-gray-700 mt-2">ADIATNA SUKMANA</h1>
+            <h1 className="font-bold text-gray-700 mt-4">ADIATNA SUKMANA</h1>
             <span className="text-red-400">Web Developer</span>
           </div>
         </div>
-        <div className="mt-10 md:mt-32 mx-auto relative">
+        <div className="mt-10 md:mt-32 lg:mt-48 mx-auto relative">
           <div
             className="rounded-r-xl 
             rounded-b-xl

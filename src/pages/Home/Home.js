@@ -1,6 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Me from "../../img/me.jpg";
+import Fb from "../../img/fb.svg";
+import Github from "../../img/github.svg";
+import Telegram from "../../img/telegram.svg";
+import Email from "../../img/email.svg";
 
 function Home(props) {
   return (
@@ -32,6 +36,28 @@ function Home(props) {
               Resume
             </a>
           </div>
+          <div className="my-12 w-3/4 mx-auto md:w-full flex justify-center md:justify-start md:items-end h-40">
+            <img
+              src={Fb}
+              alt=""
+              className="w-12 h-12 object-cover mx-auto md:mx-2"
+            />
+            <img
+              src={Github}
+              alt=""
+              className="w-12 h-12 object-cover mx-auto md:mx-2"
+            />
+            <img
+              src={Telegram}
+              alt=""
+              className="w-12 h-12 object-cover mx-auto md:mx-2"
+            />
+            <img
+              src={Email}
+              alt=""
+              className="w-18 h-12 object-cover mx-auto md:mx-2"
+            />
+          </div>
         </div>
         <div className="mt-10 md:mt-32">
           <div className="rounded-full w-64 h-64 border-8 border-gray-200 mx-auto">
@@ -43,7 +69,6 @@ function Home(props) {
           </div>
         </div>
       </div>
-      <div className="h-20"></div>
     </>
   );
 }

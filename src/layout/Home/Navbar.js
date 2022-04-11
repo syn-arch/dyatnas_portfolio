@@ -61,7 +61,7 @@ function Navbar(props) {
           <div className="w-full h-screen fixed top-0 bottom-0 left-0 right-0 bg-white z-10">
             <button
               onClick={() => setIsOpen(false)}
-              className="text-gray-800 hover:text-gray-300 inline-flex items-center justify-center p-2 rounded-md float-right mr-16 mt-5"
+              className="text-gray-800 hover:text-gray-300 inline-flex items-center justify-center p-2 rounded-md float-right mr-10 mt-5"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

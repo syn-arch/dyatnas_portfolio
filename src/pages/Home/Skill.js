@@ -18,7 +18,7 @@ function Skill(props) {
       >
         Skills
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-8 gap-x-12 mt-4">
         <div className="bg-white shadow-md rounded-md p-5">
           <img
             src={Html}

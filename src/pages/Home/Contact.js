@@ -122,7 +122,7 @@ function Contact(props) {
             </li>
           </ul>
         </div>
-        <div className="">
+        <div>
           <h2 className="font-semibold mt-4 md:mt-0">Contact Me</h2>
           <form action="" className="mt-3">
             <div className="flex justify-between">
