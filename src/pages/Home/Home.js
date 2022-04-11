@@ -6,7 +6,7 @@ function Home(props) {
   return (
     <>
       <div className="flex flex-col-reverse md:flex-row justify-around">
-        <div className="mt-10 md:mt-20 text-center md:text-left">
+        <div className="mt-10 md:mt-32 text-center md:text-left">
           <p className="text-xl md:text-2xl">Hello World, My Name Is</p>
           <h1 className="font-bold text-3xl md:text-5xl mt-2 text-gray-800">
             ADIATNA SUKMANA
@@ -31,12 +31,12 @@ function Home(props) {
             </Link>
           </div>
         </div>
-        <div className="mt-10 md:mt-20">
-          <div className="rounded-full w-64 h-64 border-8 border-gray-100 mx-auto">
+        <div className="mt-10 md:mt-32">
+          <div className="rounded-full w-64 h-64 border-8 border-gray-200 mx-auto">
             <img
               src={Me}
               alt="me"
-              className="rounded-full w-60 h-60 border-8 border-gray-200"
+              className="rounded-full w-60 h-60 border-8 border-gray-300"
             />
           </div>
         </div>
