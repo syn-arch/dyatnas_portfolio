@@ -6,7 +6,7 @@ function Navbar(props) {
 
   return (
     <>
-      <nav className="flex justify-between px-16 py-5">
+      <nav className="flex justify-between px-10 py-5">
         <Link to="/" className="font-bold text-2xl text-red-400">
           Dias
         </Link>
@@ -58,7 +58,7 @@ function Navbar(props) {
           </li>
         </ul>
         {isOpen && (
-          <div className="w-full h-screen fixed top-0 bottom-0 left-0 right-0 bg-white">
+          <div className="w-full h-screen fixed top-0 bottom-0 left-0 right-0 bg-white z-10">
             <button
               onClick={() => setIsOpen(false)}
               className="text-gray-800 hover:text-gray-300 inline-flex items-center justify-center p-2 rounded-md float-right mr-16 mt-5"
@@ -115,7 +115,7 @@ function Navbar(props) {
               <li className="border-b-2 border-b-red-300 w-1/2 text-center">
                 <Link
                   onClick={() => setIsOpen(false)}
-                  to="/protfolios"
+                  to="/portfolios"
                   className="text-center font-medium text-2xl text-gray-700 py-4 block"
                 >
                   Portfolios

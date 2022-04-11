@@ -64,6 +64,7 @@ function About(props) {
             </p>
           </div>
         </div>
+        <div className="h-10"></div>
       </div>
     </>
   );

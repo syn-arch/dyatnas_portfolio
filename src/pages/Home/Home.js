@@ -43,6 +43,7 @@ function Home(props) {
           </div>
         </div>
       </div>
+      <div className="h-20"></div>
     </>
   );
 }
