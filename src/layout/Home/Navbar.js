@@ -26,33 +26,33 @@ function Navbar(props) {
           </svg>
         </button>
         <ul className="list-none md:flex hidden">
-          <li className="px-4 transition-all hover:border-b-4 hover:border-b-red-300">
-            <Link to="/" className="text-gray-800">
+          <li className="mx-4 transition-all hover:border-b-4 hover:border-b-red-300">
+            <Link to="/" className="block h-full text-gray-800">
               Home
             </Link>
           </li>
-          <li className="px-4 transition-all hover:border-b-4 hover:border-b-red-300">
-            <Link to="/about" className="text-gray-800">
+          <li className="mx-4 transition-all hover:border-b-4 hover:border-b-red-300">
+            <Link to="/about" className="block h-full text-gray-800">
               About
             </Link>
           </li>
-          <li className="px-4 transition-all hover:border-b-4 hover:border-b-red-300">
-            <Link to="/skills" className="text-gray-800">
+          <li className="mx-4 transition-all hover:border-b-4 hover:border-b-red-300">
+            <Link to="/skills" className="block h-full text-gray-800">
               Skills
             </Link>
           </li>
-          <li className="px-4 transition-all hover:border-b-4 hover:border-b-red-300">
-            <Link to="/experiences" className="text-gray-800">
+          <li className="mx-4 transition-all hover:border-b-4 hover:border-b-red-300">
+            <Link to="/experiences" className="block h-full text-gray-800">
               Experiences
             </Link>
           </li>
-          <li className="px-4 transition-all hover:border-b-4 hover:border-b-red-300">
-            <Link to="/portfolios" className="text-gray-800">
+          <li className="mx-4 transition-all hover:border-b-4 hover:border-b-red-300">
+            <Link to="/portfolios" className="block h-full text-gray-800">
               Portfolios
             </Link>
           </li>
-          <li className="px-4 transition-all hover:border-b-4 hover:border-b-red-300">
-            <Link to="/contact" className="text-gray-800">
+          <li className="mx-4 transition-all hover:border-b-4 hover:border-b-red-300">
+            <Link to="/contact" className="block h-full text-gray-800">
               Contact
             </Link>
           </li>
@@ -76,56 +76,56 @@ function Navbar(props) {
             </button>
             <div className="clear-both"></div>
             <ul className="flex flex-col justify-center items-center mt-16">
-              <li className="border-b-2 border-b-red-300 w-1/2 text-center pb-5">
+              <li className="border-b-2 border-b-red-300 w-1/2 text-center">
                 <Link
                   onClick={() => setIsOpen(false)}
                   to="/"
-                  className="text-center font-medium text-2xl text-gray-700"
+                  className="text-center font-medium text-2xl py-4 text-gray-700 block"
                 >
                   Home
                 </Link>
               </li>
-              <li className="border-b-2 border-b-red-300 w-1/2 text-center pb-5 mt-5">
+              <li className="border-b-2 border-b-red-300 w-1/2 text-center">
                 <Link
                   onClick={() => setIsOpen(false)}
                   to="/about"
-                  className="text-center font-medium text-2xl text-gray-700"
+                  className="text-center font-medium text-2xl text-gray-700 py-4 block "
                 >
                   About
                 </Link>
               </li>
-              <li className="border-b-2 border-b-red-300 w-1/2 text-center pb-5 mt-5">
+              <li className="border-b-2 border-b-red-300 w-1/2 text-center">
                 <Link
                   onClick={() => setIsOpen(false)}
                   to="/skills"
-                  className="text-center font-medium text-2xl text-gray-700"
+                  className="text-center font-medium text-2xl text-gray-700 py-4 block"
                 >
                   Skills
                 </Link>
               </li>
-              <li className="border-b-2 border-b-red-300 w-1/2 text-center pb-5 mt-5">
+              <li className="border-b-2 border-b-red-300 w-1/2 text-center">
                 <Link
                   onClick={() => setIsOpen(false)}
                   to="/experiences"
-                  className="text-center font-medium text-2xl text-gray-700"
+                  className="text-center font-medium text-2xl text-gray-700 py-4 block"
                 >
                   Experiences
                 </Link>
               </li>
-              <li className="border-b-2 border-b-red-300 w-1/2 text-center pb-5 mt-5">
+              <li className="border-b-2 border-b-red-300 w-1/2 text-center">
                 <Link
                   onClick={() => setIsOpen(false)}
                   to="/protfolios"
-                  className="text-center font-medium text-2xl text-gray-700"
+                  className="text-center font-medium text-2xl text-gray-700 py-4 block"
                 >
                   Portfolios
                 </Link>
               </li>
-              <li className="border-b-2 border-b-red-300 w-1/2 text-center pb-5 mt-5">
+              <li className="border-b-2 border-b-red-300 w-1/2 text-center">
                 <Link
                   onClick={() => setIsOpen(false)}
                   to="/contact"
-                  className="text-center font-medium text-2xl text-gray-700"
+                  className="text-center font-medium text-2xl text-gray-700 py-4 block"
                 >
                   Contact
                 </Link>
