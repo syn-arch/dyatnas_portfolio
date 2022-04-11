@@ -23,12 +23,14 @@ function Home(props) {
             </Link>
           </div>
           <div className="mt-10">
-            <Link
-              to="/download-resume"
+            <a
+              href="/files/AdiatnaSukmana.pdf"
+              target="_blank"
+              download
               className="py-2 px-16 border-2 border-red-400 rounded-full text-gray-800 hover:bg-red-400 hover:text-white hover:border-red-400 transition-all duration-300 ease-in-out"
             >
               Resume
-            </Link>
+            </a>
           </div>
         </div>
         <div className="mt-10 md:mt-32">

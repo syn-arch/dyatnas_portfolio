@@ -1,11 +1,7 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {
-      backgroundImage: {
-        "bg-main": "url('/bg.jpg')",
-      },
-    },
+    extend: {},
     fontFamily: {
       poppins: ["Poppins", "sans-serif"],
     },
