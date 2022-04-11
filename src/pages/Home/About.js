@@ -14,7 +14,7 @@ function About(props) {
             />
           </div>
           <div className="text-center">
-            <h2 className="font-bold text-gray-700 mt-2">ADIATNA SUKMANA</h2>
+            <h1 className="font-bold text-gray-700 mt-2">ADIATNA SUKMANA</h1>
             <span className="text-red-400">Web Developer</span>
           </div>
         </div>

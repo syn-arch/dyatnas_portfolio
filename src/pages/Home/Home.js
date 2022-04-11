@@ -17,7 +17,7 @@ function Home(props) {
           <div className="mt-10">
             <Link
               to="/about"
-              className="py-2 px-16 bg-red-500 rounded-xl text-white hover:bg-red-400 transition-all duration-300 ease-in-out"
+              className="py-2 px-16 bg-red-500 rounded-full text-white hover:bg-red-400 transition-all duration-300 ease-in-out"
             >
               About Me
             </Link>
@@ -25,7 +25,7 @@ function Home(props) {
           <div className="mt-10">
             <Link
               to="/download-resume"
-              className="py-2 px-16 border-2 border-red-400 rounded-xl text-gray-800 hover:bg-red-400 hover:text-white hover:border-red-400 transition-all duration-300 ease-in-out"
+              className="py-2 px-16 border-2 border-red-400 rounded-full text-gray-800 hover:bg-red-400 hover:text-white hover:border-red-400 transition-all duration-300 ease-in-out"
             >
               Resume
             </Link>
