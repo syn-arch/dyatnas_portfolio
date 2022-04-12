@@ -40,22 +40,22 @@ function Home(props) {
             <img
               src={Fb}
               alt=""
-              className="w-12 h-12 object-cover mx-auto md:mx-2"
+              className="w-8 h-8 object-cover mx-auto md:mx-2"
             />
             <img
               src={Github}
               alt=""
-              className="w-12 h-12 object-cover mx-auto md:mx-2"
+              className="w-8 h-8 object-cover mx-auto md:mx-2"
             />
             <img
               src={Telegram}
               alt=""
-              className="w-12 h-12 object-cover mx-auto md:mx-2"
+              className="w-8 h-8 object-cover mx-auto md:mx-2"
             />
             <img
               src={Email}
               alt=""
-              className="w-18 h-12 object-cover mx-auto md:mx-2"
+              className="w-12 h-8 object-cover mx-auto md:mx-2"
             />
           </div>
         </div>

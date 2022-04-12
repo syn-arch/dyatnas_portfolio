@@ -8,6 +8,7 @@ import Skill from "../pages/Home/Skill";
 import Experience from "../pages/Home/Experience";
 import Portfolio from "../pages/Home/Portfolio";
 import Contact from "../pages/Home/Contact";
+import Login from "../pages/Home/Login";
 
 function Main(props) {
   return (
@@ -67,6 +68,7 @@ function Main(props) {
             </HomeLayout>
           }
         />
+        <Route path="/login" exact element={<Login />} />
         <Route path="*" element="404 Not Found" />
       </Routes>
     </BrowserRouter>
