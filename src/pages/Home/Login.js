@@ -12,6 +12,7 @@ function Login(props) {
             <input
               id="email"
               type="text"
+              autoComplete="off"
               className="w-full mt-2 py-2 px-4 border rounded"
               placeholder="yourmail@example.com"
             />
@@ -27,7 +28,7 @@ function Login(props) {
           </div>
           <button
             type="submit"
-            className="bg-fuchsia-500 hover:bg-fuchsia-400 text-center py-2 px-6 rounded block w-full text-white"
+            className="bg-red-500 hover:bg-red-400 text-center py-2 px-6 rounded block w-full text-white"
           >
             Submit
           </button>
