@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Sidebar(props) {
   return (
     <aside className="w-64 hidden sm:block" aria-label="Sidebar">
-      <div className="overflow-y-auto py-4 px-3 bg-white rounded h-full shadow">
+      <div className="overflow-y-auto py-4 px-3 bg-white rounded h-full shadow ">
         <a
           href="https://adiatnasukmana.com"
           target="_blank"
@@ -32,7 +32,7 @@ function Sidebar(props) {
         <ul className="space-y-2">
           <li>
             <Link
-              to="/dashboard"
+              to="/admin/dashboard"
               className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 "
             >
               <svg
@@ -60,7 +60,7 @@ function Sidebar(props) {
           </li>
           <li>
             <Link
-              to="/dashboard"
+              to="/admin/about"
               className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 "
             >
               <svg
@@ -82,7 +82,7 @@ function Sidebar(props) {
           </li>
           <li>
             <Link
-              to="/dashboard"
+              to="/admin/skills"
               className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 "
             >
               <svg
@@ -104,7 +104,7 @@ function Sidebar(props) {
           </li>
           <li>
             <Link
-              to="/dashboard"
+              to="/admin/experiences"
               className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 "
             >
               <svg
@@ -126,7 +126,7 @@ function Sidebar(props) {
           </li>
           <li>
             <Link
-              to="/dashboard"
+              to="/admin/category"
               className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 "
             >
               <svg
@@ -148,7 +148,7 @@ function Sidebar(props) {
           </li>
           <li>
             <Link
-              to="/dashboard"
+              to="/admin/portfolios"
               className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 "
             >
               <svg
@@ -170,7 +170,7 @@ function Sidebar(props) {
           </li>
           <li>
             <Link
-              to="/dashboard"
+              to="/admin/profile"
               className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 "
             >
               <svg
@@ -197,9 +197,9 @@ function Sidebar(props) {
             </Link>
           </li>
           <li>
-            <Link
-              to="/dashboard"
-              className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 "
+            <button
+              onClick={(e) => console.log("logout")}
+              className="flex w-full items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 "
             >
               <svg
                 className="w-6 h-6"
@@ -216,7 +216,7 @@ function Sidebar(props) {
                 ></path>
               </svg>
               <span className="ml-3">Logout</span>
-            </Link>
+            </button>
           </li>
         </ul>
       </div>

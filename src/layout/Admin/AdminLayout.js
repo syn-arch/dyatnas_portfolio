@@ -1,5 +1,5 @@
 import React from "react";
-import { Sidebar, Navbar } from "./Index";
+import { Sidebar, Navbar, Footer } from "./Index";
 
 function AdminLayout(props) {
   return (
@@ -8,6 +8,7 @@ function AdminLayout(props) {
       <div className="content w-full">
         <Navbar />
         {props.children}
+        <Footer />
       </div>
     </div>
   );
