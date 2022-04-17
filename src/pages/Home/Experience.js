@@ -4,7 +4,7 @@ function Experience(props) {
   return (
     <div className="w-11/12 mx-auto">
       <h1
-        className="text-2xl font-bold mt-12 relative text-gray-800
+        className="text-2xl font-bold mt-24 relative text-gray-800
         after:content-['']
         after:ml-4
         after:inline-block
@@ -69,7 +69,7 @@ function Experience(props) {
         after:top-4
         "
       >
-        Educations
+        Experiences
       </h1>
       <div className="bg-white shadow rounded p-4 mt-4">
         <ol className="relative border-l border-gray-200 ml-4">

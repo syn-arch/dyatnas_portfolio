@@ -9,8 +9,8 @@ import Email from "../../img/email.svg";
 function Home(props) {
   return (
     <>
-      <div className="flex flex-col-reverse md:flex-row justify-around">
-        <div className="mt-10 md:mt-32 text-center md:text-left">
+      <div className="flex flex-col-reverse md:flex-row justify-around min-h-screen">
+        <div className="mt-10 md:mt-40 text-center md:text-left">
           <p className="text-xl md:text-2xl">Hello World, My Name Is</p>
           <h1 className="font-bold text-3xl md:text-5xl mt-2 text-gray-800">
             ADIATNA SUKMANA
@@ -59,7 +59,7 @@ function Home(props) {
             />
           </div>
         </div>
-        <div className="mt-10 md:mt-32">
+        <div className="mt-10 md:mt-40">
           <div className="rounded-full w-64 h-64 border-8 border-gray-200 mx-auto">
             <img
               src={Me}
