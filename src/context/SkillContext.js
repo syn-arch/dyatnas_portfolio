@@ -2,7 +2,7 @@ import { createContext, useContext, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
-import GlobalContext from "./GlobalContext";
+import { GlobalContext } from "./GlobalContext";
 
 export const SkillContext = createContext();
 
