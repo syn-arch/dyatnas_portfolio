@@ -1,14 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 function Sidebar(props) {
+  const navigate = useNavigate();
   return (
     <aside className="w-64 hidden sm:block" aria-label="Sidebar">
       <div className="overflow-y-auto py-4 px-3 bg-white rounded h-full shadow">
-        <a
-          href="https://adiatnasukmana.com"
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          to="/admin/dashboard"
           className="flex items-center justify-center pl-2.5 mb-5"
         >
           <svg
@@ -28,11 +28,11 @@ function Sidebar(props) {
           <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
             Ngonfig
           </span>
-        </a>
+        </Link>
         <ul className="space-y-2">
           <li>
             <Link
-              to="/dashboard"
+              to="/admin/dashboard"
               className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 "
             >
               <svg
@@ -60,7 +60,7 @@ function Sidebar(props) {
           </li>
           <li>
             <Link
-              to="/dashboard"
+              to="/admin/about"
               className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 "
             >
               <svg
@@ -82,7 +82,7 @@ function Sidebar(props) {
           </li>
           <li>
             <Link
-              to="/dashboard"
+              to="/admin/skills"
               className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 "
             >
               <svg
@@ -104,7 +104,7 @@ function Sidebar(props) {
           </li>
           <li>
             <Link
-              to="/dashboard"
+              to="/admin/experiences"
               className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 "
             >
               <svg
@@ -126,7 +126,7 @@ function Sidebar(props) {
           </li>
           <li>
             <Link
-              to="/dashboard"
+              to="/admin/categories"
               className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 "
             >
               <svg
@@ -143,12 +143,12 @@ function Sidebar(props) {
                   d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"
                 ></path>
               </svg>
-              <span className="ml-3">Category</span>
+              <span className="ml-3">Categories</span>
             </Link>
           </li>
           <li>
             <Link
-              to="/dashboard"
+              to="/admin/portfolios"
               className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 "
             >
               <svg
@@ -170,7 +170,7 @@ function Sidebar(props) {
           </li>
           <li>
             <Link
-              to="/dashboard"
+              to="/admin/profile"
               className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 "
             >
               <svg
@@ -197,8 +197,13 @@ function Sidebar(props) {
             </Link>
           </li>
           <li>
-            <Link
-              to="/dashboard"
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                Cookies.remove("token");
+                Cookies.remove("user");
+                navigate("/login");
+              }}
               className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 "
             >
               <svg
@@ -216,7 +221,7 @@ function Sidebar(props) {
                 ></path>
               </svg>
               <span className="ml-3">Logout</span>
-            </Link>
+            </button>
           </li>
         </ul>
       </div>
