@@ -4,20 +4,16 @@ import About from "../pages/admin/About";
 import Profile from "../pages/admin/Profile";
 
 import SkillIndex from "../pages/admin/skill/SkillIndex";
-import SkillCreate from "../pages/admin/skill/SkillCreate";
-import SkillEdit from "../pages/admin/skill/SkillEdit";
+import SkillForm from "../pages/admin/skill/SkillForm";
 
 import ExperienceIndex from "../pages/admin/experience/ExperienceIndex";
-import ExperienceCreate from "../pages/admin/experience/ExperienceCreate";
-import ExperienceEdit from "../pages/admin/experience/ExperienceEdit";
+import ExperienceForm from "../pages/admin/experience/ExperienceForm";
 
 import CategoryIndex from "../pages/admin/category/CategoryIndex";
-import CategoryCreate from "../pages/admin/category/CategoryCreate";
-import CategoryEdit from "../pages/admin/category/CategoryEdit";
+import CategoryForm from "../pages/admin/category/CategoryForm";
 
 import PortfolioIndex from "../pages/admin/portfolio/PortfolioIndex";
-import PortfolioCreate from "../pages/admin/portfolio/PortfolioCreate";
-import PortfolioEdit from "../pages/admin/portfolio/PortfolioEdit";
+import PortfolioForm from "../pages/admin/portfolio/PortfolioForm";
 
 const AdminRoutes = [
   {
@@ -61,7 +57,7 @@ const AdminRoutes = [
     path: "/admin/skills/create",
     element: (
       <AdminLayout>
-        <SkillCreate />
+        <SkillForm />
       </AdminLayout>
     ),
   },
@@ -70,7 +66,7 @@ const AdminRoutes = [
     path: "/admin/skills/edit/:id",
     element: (
       <AdminLayout>
-        <SkillEdit />
+        <SkillForm />
       </AdminLayout>
     ),
   },
@@ -88,7 +84,7 @@ const AdminRoutes = [
     path: "/admin/experiences/create",
     element: (
       <AdminLayout>
-        <ExperienceCreate />
+        <ExperienceForm />
       </AdminLayout>
     ),
   },
@@ -97,7 +93,7 @@ const AdminRoutes = [
     path: "/admin/experiences/edit/:id",
     element: (
       <AdminLayout>
-        <ExperienceEdit />
+        <ExperienceForm />
       </AdminLayout>
     ),
   },
@@ -115,7 +111,7 @@ const AdminRoutes = [
     path: "/admin/categories/create",
     element: (
       <AdminLayout>
-        <CategoryCreate />
+        <CategoryForm />
       </AdminLayout>
     ),
   },
@@ -124,7 +120,7 @@ const AdminRoutes = [
     path: "/admin/categories/edit/:id",
     element: (
       <AdminLayout>
-        <CategoryEdit />
+        <CategoryForm />
       </AdminLayout>
     ),
   },
@@ -142,7 +138,7 @@ const AdminRoutes = [
     path: "/admin/portfolios/create",
     element: (
       <AdminLayout>
-        <PortfolioCreate />
+        <PortfolioForm />
       </AdminLayout>
     ),
   },
@@ -151,7 +147,7 @@ const AdminRoutes = [
     path: "/admin/portfolios/edit/:id",
     element: (
       <AdminLayout>
-        <PortfolioEdit />
+        <PortfolioForm />
       </AdminLayout>
     ),
   },

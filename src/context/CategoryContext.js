@@ -4,19 +4,16 @@ import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { GlobalContext } from "./GlobalContext";
 
-export const SkillContext = createContext();
+export const CategoryContext = createContext();
 
-export const SkillProvider = (props) => {
+export const CategoryProvider = (props) => {
   const navigate = useNavigate();
   const { URL } = useContext(GlobalContext);
-  const [skills, setSkills] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [currentId, setCurrentId] = useState(-1);
   const [fetchStatus, setFetchStatus] = useState(true);
   const [input, setInput] = useState({
     name: "",
-    picture: "",
-    description: "",
-    long_experience: "",
   });
 
   const handleChange = (e) => {
@@ -26,40 +23,33 @@ export const SkillProvider = (props) => {
   const emptyInput = () => {
     setInput({
       name: "",
-      picture: "",
-      description: "",
-      long_experience: "",
     });
   };
 
   const handleEdit = (e) => {
     const id = e.target.value;
-    navigate(`/admin/skills/edit/${id}`);
+    navigate(`/admin/categories/edit/${id}`);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (currentId === -1) {
       axios
-        .post(`${URL}/skills`, input, {
-          headers: {
-            Authorization: "Bearer " + Cookies.get("token"),
-          },
+        .post(`${URL}/categories`, input, {
+          headers: { Authorization: "Bearer " + Cookies.get("token") },
         })
         .then((e) => {
           setFetchStatus(true);
-          navigate("/admin/skills");
+          navigate("/admin/categories");
         });
     } else {
       axios
-        .put(`${URL}/skills/${currentId}`, input, {
-          headers: {
-            Authorization: "Bearer " + Cookies.get("token"),
-          },
+        .put(`${URL}/categories/${currentId}`, input, {
+          headers: { Authorization: "Bearer " + Cookies.get("token") },
         })
         .then((e) => {
           setFetchStatus(true);
-          navigate("/admin/skills");
+          navigate("/admin/categories");
         });
     }
 
@@ -70,10 +60,8 @@ export const SkillProvider = (props) => {
   const handleDelete = (e) => {
     const id = e.target.value;
     axios
-      .delete(`${URL}/skills/${id}`, {
-        headers: {
-          Authorization: "Bearer " + Cookies.get("token"),
-        },
+      .delete(`${URL}/categories/${id}`, {
+        headers: { Authorization: "Bearer " + Cookies.get("token") },
       })
       .then((e) => {
         setFetchStatus(true);
@@ -88,8 +76,8 @@ export const SkillProvider = (props) => {
   };
 
   let state = {
-    skills,
-    setSkills,
+    categories,
+    setCategories,
     currentId,
     setCurrentId,
     fetchStatus,
@@ -99,8 +87,8 @@ export const SkillProvider = (props) => {
     emptyInput,
   };
   return (
-    <SkillContext.Provider value={{ state, handleFunction }}>
+    <CategoryContext.Provider value={{ state, handleFunction }}>
       {props.children}
-    </SkillContext.Provider>
+    </CategoryContext.Provider>
   );
 };
