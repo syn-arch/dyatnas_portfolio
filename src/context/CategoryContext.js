@@ -15,6 +15,10 @@ export const CategoryProvider = (props) => {
   const [input, setInput] = useState({
     name: "",
   });
+  const [error, setError] = useState({
+    message: "",
+    errors: [],
+  });
 
   const handleChange = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
@@ -41,6 +45,12 @@ export const CategoryProvider = (props) => {
         .then((e) => {
           setFetchStatus(true);
           navigate("/admin/categories");
+        })
+        .catch((e) => {
+          setError({
+            message: e.response.data.message,
+            errors: e.response.data.errors,
+          });
         });
     } else {
       axios
@@ -50,6 +60,12 @@ export const CategoryProvider = (props) => {
         .then((e) => {
           setFetchStatus(true);
           navigate("/admin/categories");
+        })
+        .catch((e) => {
+          setError({
+            message: e.response.data.message,
+            errors: e.response.data.errors,
+          });
         });
     }
 
@@ -85,6 +101,8 @@ export const CategoryProvider = (props) => {
     input,
     setInput,
     emptyInput,
+    error,
+    setError,
   };
   return (
     <CategoryContext.Provider value={{ state, handleFunction }}>

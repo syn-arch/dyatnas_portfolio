@@ -3,7 +3,6 @@ import React, { useContext, useEffect } from "react";
 import { CategoryContext } from "../../../context/CategoryContext";
 import { GlobalContext } from "../../../context/GlobalContext";
 import { Link } from "react-router-dom";
-import { isValidDateValue } from "@testing-library/user-event/dist/utils";
 
 function CategoryIndex(props) {
   const { URL } = useContext(GlobalContext);
@@ -35,6 +34,9 @@ function CategoryIndex(props) {
         <thead className="text-xs text-white uppercase bg-gray-300">
           <tr>
             <th scope="col" className="px-6 py-3">
+              No
+            </th>
+            <th scope="col" className="px-6 py-3">
               Name
             </th>
             <th scope="col" className="px-6 py-3  text-center">
@@ -43,12 +45,13 @@ function CategoryIndex(props) {
           </tr>
         </thead>
         <tbody>
-          {categories.map((category) => {
+          {categories.map((category, index) => {
             return (
               <tr
                 key={category.id}
                 className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
               >
+                <td className="px-6 py-4">{index + 1}</td>
                 <td className="px-6 py-4">{category.name}</td>
                 <td className="px-6 py-4 text-center">
                   <button

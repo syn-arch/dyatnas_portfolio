@@ -7,17 +7,18 @@ import { GlobalContext } from "../../../context/GlobalContext";
 function CategoryForm(props) {
   const { URL } = useContext(GlobalContext);
   const { state, handleFunction } = useContext(CategoryContext);
-  const { input, setInput, setCurrentId, emptyInput } = state;
+  const { input, setInput, setCurrentId, emptyInput, error } = state;
   const { handleSubmit, handleChange } = handleFunction;
 
   const { id } = useParams();
 
   useEffect(() => {
     if (id !== undefined) {
-      const fetchData = async () => {
-        const result = await axios.get(`${URL}/categories/${id}`);
-        setInput(result.data.data);
-        setCurrentId(id);
+      const fetchData = () => {
+        axios.get(`${URL}/categories/${id}`).then((result) => {
+          setInput(result.data.data);
+          setCurrentId(id);
+        });
       };
 
       fetchData();
@@ -41,6 +42,12 @@ function CategoryForm(props) {
       </div>
       <hr />
       <form className="w-1/2 mx-auto" onSubmit={handleSubmit}>
+        {error.message && (
+          <div className="bg-red-300 p-3 rounded text-white mt-3">
+            <strong>{error.message}</strong>
+            <ul>{error.errors && <li>{error.errors.name}</li>}</ul>
+          </div>
+        )}
         <div className="my-4">
           <label htmlFor="name">Name</label>
           <input

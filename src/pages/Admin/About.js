@@ -18,7 +18,7 @@ function About(props) {
         <div className="my-4">
           <label htmlFor="profession">Profession</label>
           <input
-            id="phone"
+            id="profession"
             type="text"
             className="w-full mt-2 py-2 px-4 border rounded"
             placeholder="Profession"

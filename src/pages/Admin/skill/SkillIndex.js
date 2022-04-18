@@ -5,7 +5,7 @@ import { GlobalContext } from "../../../context/GlobalContext";
 import { Link } from "react-router-dom";
 
 function SkillIndex(props) {
-  const { URL } = useContext(GlobalContext);
+  const { URL, URL_IMAGE } = useContext(GlobalContext);
   const { state, handleFunction } = useContext(SkillContext);
   const { skills, setSkills, fetchStatus, setFetchStatus } = state;
   const { handleEdit, handleDelete } = handleFunction;
@@ -34,6 +34,9 @@ function SkillIndex(props) {
         <thead className="text-xs text-white uppercase bg-gray-300">
           <tr>
             <th scope="col" className="px-6 py-3">
+              No
+            </th>
+            <th scope="col" className="px-6 py-3">
               Name
             </th>
             <th scope="col" className="px-6 py-3">
@@ -51,14 +54,21 @@ function SkillIndex(props) {
           </tr>
         </thead>
         <tbody>
-          {skills.map((skill) => {
+          {skills.map((skill, index) => {
             return (
               <tr
                 key={skill.id}
                 className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
               >
+                <td className="px-6 py-4">{index + 1}</td>
                 <td className="px-6 py-4">{skill.name}</td>
-                <td className="px-6 py-4">{skill.picture}</td>
+                <td className="px-6 py-4">
+                  <img
+                    src={`${URL_IMAGE}/uploads/${skill.picture}`}
+                    alt=""
+                    className="w-24 h-24 object-cover"
+                  />
+                </td>
                 <td className="px-6 py-4">{skill.description}</td>
                 <td className="px-6 py-4">{skill.long_experience}</td>
                 <td className="px-6 py-4 text-center">

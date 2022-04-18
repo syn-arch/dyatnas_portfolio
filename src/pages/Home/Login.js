@@ -14,14 +14,9 @@ function Login(props) {
     errors: [],
   });
 
-  const list = {
-    email: "required",
-    password: "required",
-  };
-
   useEffect(() => {
     if (Cookies.get("token")) {
-      navigate("/");
+      navigate("/admin/dashboard");
     }
   }, [navigate]);
 
@@ -44,14 +39,13 @@ function Login(props) {
 
   return (
     <div className="bg-gray-200 h-screen flex justify-center items-center">
-      <div className="bg-white shadow  p-14 rounded-lg">
+      <div className="bg-white shadow p-8 md:p-14 rounded-lg">
         <h1 className="text-center font-semibold">Login Page</h1>
         <p className="text-center text-sm">Login to start your session</p>
 
         {error.message && (
           <div className="bg-red-300 p-3 rounded text-white mt-3">
-            <strong>Error</strong>
-            <p>{error.message}</p>
+            <strong>{error.message}</strong>
             <ul>
               {error.errors && <li>{error.errors.email}</li>}
               {error.errors && <li>{error.errors.password}</li>}

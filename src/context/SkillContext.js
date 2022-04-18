@@ -12,6 +12,10 @@ export const SkillProvider = (props) => {
   const [skills, setSkills] = useState([]);
   const [currentId, setCurrentId] = useState(-1);
   const [fetchStatus, setFetchStatus] = useState(true);
+  const [error, setError] = useState({
+    message: "",
+    errors: [],
+  });
   const [input, setInput] = useState({
     name: "",
     picture: "",
@@ -21,6 +25,10 @@ export const SkillProvider = (props) => {
 
   const handleChange = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
+  };
+
+  const handleChangePicture = (e) => {
+    setInput({ ...input, picture: e.target.files[0] });
   };
 
   const emptyInput = () => {
@@ -40,8 +48,13 @@ export const SkillProvider = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (currentId === -1) {
+      const data = new FormData();
+      data.append("name", input.name);
+      data.append("picture", input.picture);
+      data.append("description", input.description);
+      data.append("long_experience", input.long_experience);
       axios
-        .post(`${URL}/skills`, input, {
+        .post(`${URL}/skills`, data, {
           headers: {
             Authorization: "Bearer " + Cookies.get("token"),
           },
@@ -49,10 +62,21 @@ export const SkillProvider = (props) => {
         .then((e) => {
           setFetchStatus(true);
           navigate("/admin/skills");
+        })
+        .catch((e) => {
+          setError({
+            message: e.response.data.message,
+            errors: e.response.data.errors,
+          });
         });
     } else {
+      const data = new FormData();
+      data.append("name", input.name);
+      data.append("picture", input.picture);
+      data.append("description", input.description);
+      data.append("long_experience", input.long_experience);
       axios
-        .put(`${URL}/skills/${currentId}`, input, {
+        .post(`${URL}/skills/${currentId}?_method=PUT`, data, {
           headers: {
             Authorization: "Bearer " + Cookies.get("token"),
           },
@@ -60,6 +84,12 @@ export const SkillProvider = (props) => {
         .then((e) => {
           setFetchStatus(true);
           navigate("/admin/skills");
+        })
+        .catch((e) => {
+          setError({
+            message: e.response.data.message,
+            errors: e.response.data.errors,
+          });
         });
     }
 
@@ -82,6 +112,7 @@ export const SkillProvider = (props) => {
 
   let handleFunction = {
     handleChange,
+    handleChangePicture,
     handleSubmit,
     handleEdit,
     handleDelete,
@@ -97,6 +128,8 @@ export const SkillProvider = (props) => {
     input,
     setInput,
     emptyInput,
+    error,
+    setError,
   };
   return (
     <SkillContext.Provider value={{ state, handleFunction }}>

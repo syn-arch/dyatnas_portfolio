@@ -7,8 +7,8 @@ import { GlobalContext } from "../../../context/GlobalContext";
 function SkillEdit(props) {
   const { URL } = useContext(GlobalContext);
   const { state, handleFunction } = useContext(SkillContext);
-  const { input, setInput, setCurrentId, emptyInput } = state;
-  const { handleSubmit, handleChange } = handleFunction;
+  const { input, setInput, setCurrentId, emptyInput, error } = state;
+  const { handleSubmit, handleChange, handleChangePicture } = handleFunction;
 
   const { id } = useParams();
 
@@ -39,6 +39,15 @@ function SkillEdit(props) {
       </div>
       <hr />
       <form className="w-1/2 mx-auto" onSubmit={handleSubmit}>
+        {error.message && (
+          <div className="bg-red-300 p-3 rounded text-white mt-3">
+            <strong>{error.message}</strong>
+            <ul>{error.errors && <li>{error.errors.name}</li>}</ul>
+            <ul>{error.errors && <li>{error.errors.picture}</li>}</ul>
+            <ul>{error.errors && <li>{error.errors.description}</li>}</ul>
+            <ul>{error.errors && <li>{error.errors.long_experience}</li>}</ul>
+          </div>
+        )}
         <div className="my-4">
           <label htmlFor="name">Name</label>
           <input
@@ -51,7 +60,17 @@ function SkillEdit(props) {
             onChange={handleChange}
           />
         </div>
-
+        <div className="my-4">
+          <label htmlFor="picture">Picture</label>
+          <input
+            id="picture"
+            type="file"
+            className="w-full mt-2 py-2 px-4 border rounded"
+            placeholder="Picture"
+            name="picture"
+            onChange={handleChangePicture}
+          />
+        </div>
         <div className="my-4">
           <label htmlFor="description">Description</label>
           <textarea
