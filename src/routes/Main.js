@@ -5,6 +5,7 @@ import { GlobalProvider } from "../context/GlobalContext";
 import { SkillProvider } from "../context/SkillContext";
 import { CategoryProvider } from "../context/CategoryContext";
 import { ExperienceProvider } from "../context/ExperienceContext";
+import { PortfolioProvider } from "../context/PortfolioContext";
 
 function Main(props) {
   return (
@@ -13,12 +14,14 @@ function Main(props) {
         <SkillProvider>
           <CategoryProvider>
             <ExperienceProvider>
-              <Routes>
-                {routes.map((route) => {
-                  return <Route {...route} />;
-                })}
-                <Route path="*" element="404 Not Found" />
-              </Routes>
+              <PortfolioProvider>
+                <Routes>
+                  {routes.map((route) => {
+                    return <Route {...route} />;
+                  })}
+                  <Route path="*" element="404 Not Found" />
+                </Routes>
+              </PortfolioProvider>
             </ExperienceProvider>
           </CategoryProvider>
         </SkillProvider>

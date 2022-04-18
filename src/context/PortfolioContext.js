@@ -4,48 +4,45 @@ import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { GlobalContext } from "./GlobalContext";
 
-export const SkillContext = createContext();
+export const PortfolioContext = createContext();
 
-export const SkillProvider = (props) => {
+export const PortfolioProvider = (props) => {
   const navigate = useNavigate();
   const { URL } = useContext(GlobalContext);
-  const [skills, setSkills] = useState([]);
+  const [portfolios, setPortfolios] = useState([]);
   const [currentId, setCurrentId] = useState(-1);
   const [fetchStatus, setFetchStatus] = useState(true);
   const [previewImage, setPreviewImage] = useState("");
+  const [input, setInput] = useState({
+    name: "",
+    id_category: "",
+    picture: "",
+    description: "",
+    tags: "",
+  });
   const [error, setError] = useState({
     message: "",
     errors: [],
-  });
-  const [input, setInput] = useState({
-    name: "",
-    picture: "",
-    description: "",
-    long_experience: "",
   });
 
   const handleChange = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
-  const handleChangePicture = (e) => {
-    setInput({ ...input, picture: e.target.files[0] });
-    setPreviewImage(window.URL.createObjectURL(e.target.files[0]));
-  };
-
   const emptyInput = () => {
     setPreviewImage("");
     setInput({
       name: "",
+      id_category: "",
       picture: "",
       description: "",
-      long_experience: "",
+      tags: "",
     });
   };
 
   const handleEdit = (e) => {
     const id = e.target.value;
-    navigate(`/admin/skills/edit/${id}`);
+    navigate(`/admin/portfolios/edit/${id}`);
   };
 
   const handleSubmit = (e) => {
@@ -55,16 +52,15 @@ export const SkillProvider = (props) => {
       data.append("name", input.name);
       data.append("picture", input.picture);
       data.append("description", input.description);
-      data.append("long_experience", input.long_experience);
+      data.append("id_category", input.id_category);
+      data.append("tags", input.tags);
       axios
-        .post(`${URL}/skills`, data, {
-          headers: {
-            Authorization: "Bearer " + Cookies.get("token"),
-          },
+        .post(`${URL}/portfolios`, data, {
+          headers: { Authorization: "Bearer " + Cookies.get("token") },
         })
         .then((e) => {
           setFetchStatus(true);
-          navigate("/admin/skills");
+          navigate("/admin/portfolios");
         })
         .catch((e) => {
           setError({
@@ -77,16 +73,15 @@ export const SkillProvider = (props) => {
       data.append("name", input.name);
       data.append("picture", input.picture);
       data.append("description", input.description);
-      data.append("long_experience", input.long_experience);
+      data.append("id_category", input.id_category);
+      data.append("tags", input.tags);
       axios
-        .post(`${URL}/skills/${currentId}?_method=PUT`, data, {
-          headers: {
-            Authorization: "Bearer " + Cookies.get("token"),
-          },
+        .post(`${URL}/portfolios/${currentId}?_method=PUT`, data, {
+          headers: { Authorization: "Bearer " + Cookies.get("token") },
         })
         .then((e) => {
           setFetchStatus(true);
-          navigate("/admin/skills");
+          navigate("/admin/portfolios");
         })
         .catch((e) => {
           setError({
@@ -103,14 +98,17 @@ export const SkillProvider = (props) => {
   const handleDelete = (e) => {
     const id = e.target.value;
     axios
-      .delete(`${URL}/skills/${id}`, {
-        headers: {
-          Authorization: "Bearer " + Cookies.get("token"),
-        },
+      .delete(`${URL}/portfolios/${id}`, {
+        headers: { Authorization: "Bearer " + Cookies.get("token") },
       })
       .then((e) => {
         setFetchStatus(true);
       });
+  };
+
+  const handleChangePicture = (e) => {
+    setInput({ ...input, picture: e.target.files[0] });
+    setPreviewImage(window.URL.createObjectURL(e.target.files[0]));
   };
 
   let handleFunction = {
@@ -123,8 +121,8 @@ export const SkillProvider = (props) => {
 
   let state = {
     previewImage,
-    skills,
-    setSkills,
+    portfolios,
+    setPortfolios,
     currentId,
     setCurrentId,
     fetchStatus,
@@ -136,8 +134,8 @@ export const SkillProvider = (props) => {
     setError,
   };
   return (
-    <SkillContext.Provider value={{ state, handleFunction }}>
+    <PortfolioContext.Provider value={{ state, handleFunction }}>
       {props.children}
-    </SkillContext.Provider>
+    </PortfolioContext.Provider>
   );
 };

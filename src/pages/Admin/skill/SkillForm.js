@@ -4,10 +4,11 @@ import { Link, useParams } from "react-router-dom";
 import { SkillContext } from "../../../context/SkillContext";
 import { GlobalContext } from "../../../context/GlobalContext";
 
-function SkillEdit(props) {
-  const { URL } = useContext(GlobalContext);
+function SkillForm(props) {
+  const { URL, URL_IMAGE } = useContext(GlobalContext);
   const { state, handleFunction } = useContext(SkillContext);
-  const { input, setInput, setCurrentId, emptyInput, error } = state;
+  const { input, setInput, setCurrentId, emptyInput, error, previewImage } =
+    state;
   const { handleSubmit, handleChange, handleChangePicture } = handleFunction;
 
   const { id } = useParams();
@@ -71,6 +72,15 @@ function SkillEdit(props) {
             onChange={handleChangePicture}
           />
         </div>
+        {previewImage ? (
+          <img src={previewImage} alt={input.name} className="w-full" />
+        ) : (
+          <img
+            src={`${URL_IMAGE}/uploads/${input.picture}`}
+            alt={input.name}
+            className="w-full"
+          />
+        )}
         <div className="my-4">
           <label htmlFor="description">Description</label>
           <textarea
@@ -110,4 +120,4 @@ function SkillEdit(props) {
   );
 }
 
-export default SkillEdit;
+export default SkillForm;
