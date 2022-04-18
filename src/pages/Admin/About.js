@@ -14,6 +14,11 @@ function About(props) {
     about: "",
     cv: "",
     picture: "",
+    facebook: "",
+    instagram: "",
+    github: "",
+    telegram: "",
+    linkedin: "",
   });
   const [error, setError] = useState({
     message: "",
@@ -46,6 +51,11 @@ function About(props) {
     data.append("about", input.about);
     data.append("cv", input.cv);
     data.append("picture", input.picture);
+    data.append("facebook", input.facebook);
+    data.append("instagram", input.instagram);
+    data.append("github", input.github);
+    data.append("telegram", input.telegram);
+    data.append("linkedin", input.linkedin);
     axios
       .post(`${URL}/profile?_method=PUT`, data, {
         headers: {
@@ -85,6 +95,11 @@ function About(props) {
             <ul>{error.errors && <li>{error.errors.about}</li>}</ul>
             <ul>{error.errors && <li>{error.errors.cv}</li>}</ul>
             <ul>{error.errors && <li>{error.errors.picture}</li>}</ul>
+            <ul>{error.errors && <li>{error.errors.facebook}</li>}</ul>
+            <ul>{error.errors && <li>{error.errors.instagram}</li>}</ul>
+            <ul>{error.errors && <li>{error.errors.github}</li>}</ul>
+            <ul>{error.errors && <li>{error.errors.telegram}</li>}</ul>
+            <ul>{error.errors && <li>{error.errors.linkedin}</li>}</ul>
           </div>
         )}
         <div className="my-4">
@@ -133,6 +148,66 @@ function About(props) {
             onChange={handleChange}
             className="w-full mt-2 py-2 px-4 border rounded"
             placeholder="Email"
+          />
+        </div>
+        <div className="my-4">
+          <label htmlFor="facebook">Facebook</label>
+          <input
+            id="facebook"
+            type="facebook"
+            name="facebook"
+            value={input.facebook}
+            onChange={handleChange}
+            className="w-full mt-2 py-2 px-4 border rounded"
+            placeholder="Facebook"
+          />
+        </div>
+        <div className="my-4">
+          <label htmlFor="instagram">Instagram</label>
+          <input
+            id="instagram"
+            type="instagram"
+            name="instagram"
+            value={input.instagram}
+            onChange={handleChange}
+            className="w-full mt-2 py-2 px-4 border rounded"
+            placeholder="Instagram"
+          />
+        </div>
+        <div className="my-4">
+          <label htmlFor="github">Github</label>
+          <input
+            id="github"
+            type="github"
+            name="github"
+            value={input.github}
+            onChange={handleChange}
+            className="w-full mt-2 py-2 px-4 border rounded"
+            placeholder="Github"
+          />
+        </div>
+        <div className="my-4">
+          <label htmlFor="telegram">Telegram</label>
+          <input
+            id="telegram"
+            type="telegram"
+            name="telegram"
+            value={input.telegram}
+            onChange={handleChange}
+            className="w-full mt-2 py-2 px-4 border rounded"
+            placeholder="Telegram"
+          />
+        </div>
+        <div className="my-4">
+          <label htmlFor="facebook">Linkedin</label>
+          <input
+            id="linkedin"
+            type="linkedin"
+            name="linkedin"
+            value={input.linkedin}
+            onChange={handleChange}
+            className="w-full mt-2 py-2 px-4 border rounded"
+            placeholder="Linkedin"
           />
         </div>
         <div className="my-4">
