@@ -23,7 +23,7 @@ function ExperienceIndex(props) {
   }, [URL, fetchStatus, setExperiences, setFetchStatus]);
 
   return (
-    <div className="relative overflow-x-auto mt-4 ml-4">
+    <div className="relative overflow-x-auto mt-4 sm:ml-4">
       <Link
         to="/admin/experiences/create"
         className="bg-gray-400 text-white py-2 px-4 rounded mb-4 inline-block hover:bg-gray-500 float-right"

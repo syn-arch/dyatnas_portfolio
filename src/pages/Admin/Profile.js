@@ -72,7 +72,7 @@ function Profile(props) {
   }, [URL]);
 
   return (
-    <div className="bg-white rounded shadow p-4 ml-4 mt-4">
+    <div className="bg-white rounded shadow p-4 sm:ml-4 mt-4">
       <h2 className="text-lg mb-3">My Profile</h2>
       <hr />
       <form className="w-1/2 mx-auto" onSubmit={handleSubmit}>

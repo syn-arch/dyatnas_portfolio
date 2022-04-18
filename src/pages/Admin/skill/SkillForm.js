@@ -31,7 +31,7 @@ function SkillForm(props) {
   }, []);
 
   return (
-    <div className="bg-white rounded shadow p-4 ml-4 mt-4">
+    <div className="bg-white rounded shadow p-4 sm:ml-4 mt-4">
       <div className="w-full flex justify-between">
         <h2 className="text-lg mb-3">{id ? "Edit Skill" : "Add Skill"}</h2>
         <Link to={"/admin/skills"} className="mr-4">
@@ -39,7 +39,7 @@ function SkillForm(props) {
         </Link>
       </div>
       <hr />
-      <form className="w-1/2 mx-auto" onSubmit={handleSubmit}>
+      <form className="w-full md:w-1/2 mx-auto" onSubmit={handleSubmit}>
         {error.message && (
           <div className="bg-red-300 p-3 rounded text-white mt-3">
             <strong>{error.message}</strong>
@@ -75,11 +75,13 @@ function SkillForm(props) {
         {previewImage ? (
           <img src={previewImage} alt={input.name} className="w-full" />
         ) : (
-          <img
-            src={`${URL_IMAGE}/uploads/${input.picture}`}
-            alt={input.name}
-            className="w-full"
-          />
+          id && (
+            <img
+              src={`${URL_IMAGE}/uploads/${input.picture || "default.jpg"}`}
+              alt={input.name}
+              className="w-full"
+            />
+          )
         )}
         <div className="my-4">
           <label htmlFor="description">Description</label>

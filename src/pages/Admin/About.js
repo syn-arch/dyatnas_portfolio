@@ -81,10 +81,10 @@ function About(props) {
   }, [URL]);
 
   return (
-    <div className="bg-white rounded shadow p-4 ml-4 mt-4">
+    <div className="bg-white rounded shadow p-4 sm:ml-4 mt-4">
       <h2 className="text-lg mb-3">About</h2>
       <hr />
-      <form className="w-1/2 mx-auto" onSubmit={handleSubmit}>
+      <form className="w-full" onSubmit={handleSubmit}>
         {error.message && (
           <div className="bg-red-300 p-3 rounded text-white mt-3">
             <strong>{error.message}</strong>
@@ -102,166 +102,174 @@ function About(props) {
             <ul>{error.errors && <li>{error.errors.linkedin}</li>}</ul>
           </div>
         )}
-        <div className="my-4">
-          <label htmlFor="name">Name</label>
-          <input
-            id="name"
-            type="text"
-            name="name"
-            value={input.name}
-            onChange={handleChange}
-            className="w-full mt-2 py-2 px-4 border rounded"
-            placeholder="Name"
-          />
+
+        <div className="flex flex-col md:flex-row">
+          <div className="w-full md:w-1/2 md:mr-2">
+            <div className="my-4">
+              <label htmlFor="name">Name</label>
+              <input
+                id="name"
+                type="text"
+                name="name"
+                value={input.name}
+                onChange={handleChange}
+                className="w-full mt-2 py-2 px-4 border rounded"
+                placeholder="Name"
+              />
+            </div>
+            <div className="my-4">
+              <label htmlFor="profession">Profession</label>
+              <input
+                id="profession"
+                type="text"
+                name="profession"
+                value={input.profession}
+                onChange={handleChange}
+                className="w-full mt-2 py-2 px-4 border rounded"
+                placeholder="Profession"
+              />
+            </div>
+            <div className="my-4">
+              <label htmlFor="phone">Phone</label>
+              <input
+                id="phone"
+                type="text"
+                name="phone"
+                value={input.phone}
+                onChange={handleChange}
+                className="w-full mt-2 py-2 px-4 border rounded"
+                placeholder="Phone"
+              />
+            </div>
+            <div className="my-4">
+              <label htmlFor="Email">Email</label>
+              <input
+                id="email"
+                type="email"
+                name="email"
+                value={input.email}
+                onChange={handleChange}
+                className="w-full mt-2 py-2 px-4 border rounded"
+                placeholder="Email"
+              />
+            </div>
+            <div className="my-4">
+              <label htmlFor="facebook">Facebook</label>
+              <input
+                id="facebook"
+                type="facebook"
+                name="facebook"
+                value={input.facebook}
+                onChange={handleChange}
+                className="w-full mt-2 py-2 px-4 border rounded"
+                placeholder="Facebook"
+              />
+            </div>
+            <div className="my-4">
+              <label htmlFor="instagram">Instagram</label>
+              <input
+                id="instagram"
+                type="instagram"
+                name="instagram"
+                value={input.instagram}
+                onChange={handleChange}
+                className="w-full mt-2 py-2 px-4 border rounded"
+                placeholder="Instagram"
+              />
+            </div>
+            <div className="my-4">
+              <label htmlFor="github">Github</label>
+              <input
+                id="github"
+                type="github"
+                name="github"
+                value={input.github}
+                onChange={handleChange}
+                className="w-full mt-2 py-2 px-4 border rounded"
+                placeholder="Github"
+              />
+            </div>
+            <div className="my-4">
+              <label htmlFor="telegram">Telegram</label>
+              <input
+                id="telegram"
+                type="telegram"
+                name="telegram"
+                value={input.telegram}
+                onChange={handleChange}
+                className="w-full mt-2 py-2 px-4 border rounded"
+                placeholder="Telegram"
+              />
+            </div>
+            <div className="my-4">
+              <label htmlFor="facebook">Linkedin</label>
+              <input
+                id="linkedin"
+                type="linkedin"
+                name="linkedin"
+                value={input.linkedin}
+                onChange={handleChange}
+                className="w-full mt-2 py-2 px-4 border rounded"
+                placeholder="Linkedin"
+              />
+            </div>
+          </div>
+
+          <div className="w-full md:w-1/2 md:ml-2">
+            <div className="my-4">
+              <label htmlFor="about">About</label>
+              <textarea
+                id="text"
+                type="text"
+                name="about"
+                onChange={handleChange}
+                value={input.about}
+                className="w-full mt-2 py-2 px-4 border rounded"
+                placeholder="About"
+                cols="30"
+                rows="10"
+              ></textarea>
+            </div>
+            <div className="my-4">
+              <label htmlFor="cv">CV</label>
+              <input
+                id="cv"
+                type="file"
+                name="cv"
+                className="w-full mt-2 py-2 px-4 border rounded"
+                onChange={handleChangeCv}
+                placeholder="CV"
+              />
+            </div>
+            <a
+              download
+              href={`${URL_IMAGE}/uploads/${input.cv}`}
+              className="text-blue-600 hover:underline"
+            >
+              Download CV
+            </a>
+            <div className="my-4">
+              <label htmlFor="picture">Picture</label>
+              <input
+                id="picture"
+                type="file"
+                name="picture"
+                onChange={handleChangePicture}
+                className="w-full mt-2 py-2 px-4 border rounded"
+                placeholder="Picture"
+              />
+            </div>
+            {previewImage ? (
+              <img src={previewImage} alt={input.name} className="w-full" />
+            ) : (
+              <img
+                src={`${URL_IMAGE}/uploads/${input.picture || "default.jpg"}`}
+                alt={input.name}
+                className="w-full"
+              />
+            )}
+          </div>
         </div>
-        <div className="my-4">
-          <label htmlFor="profession">Profession</label>
-          <input
-            id="profession"
-            type="text"
-            name="profession"
-            value={input.profession}
-            onChange={handleChange}
-            className="w-full mt-2 py-2 px-4 border rounded"
-            placeholder="Profession"
-          />
-        </div>
-        <div className="my-4">
-          <label htmlFor="phone">Phone</label>
-          <input
-            id="phone"
-            type="text"
-            name="phone"
-            value={input.phone}
-            onChange={handleChange}
-            className="w-full mt-2 py-2 px-4 border rounded"
-            placeholder="Phone"
-          />
-        </div>
-        <div className="my-4">
-          <label htmlFor="Email">Email</label>
-          <input
-            id="email"
-            type="email"
-            name="email"
-            value={input.email}
-            onChange={handleChange}
-            className="w-full mt-2 py-2 px-4 border rounded"
-            placeholder="Email"
-          />
-        </div>
-        <div className="my-4">
-          <label htmlFor="facebook">Facebook</label>
-          <input
-            id="facebook"
-            type="facebook"
-            name="facebook"
-            value={input.facebook}
-            onChange={handleChange}
-            className="w-full mt-2 py-2 px-4 border rounded"
-            placeholder="Facebook"
-          />
-        </div>
-        <div className="my-4">
-          <label htmlFor="instagram">Instagram</label>
-          <input
-            id="instagram"
-            type="instagram"
-            name="instagram"
-            value={input.instagram}
-            onChange={handleChange}
-            className="w-full mt-2 py-2 px-4 border rounded"
-            placeholder="Instagram"
-          />
-        </div>
-        <div className="my-4">
-          <label htmlFor="github">Github</label>
-          <input
-            id="github"
-            type="github"
-            name="github"
-            value={input.github}
-            onChange={handleChange}
-            className="w-full mt-2 py-2 px-4 border rounded"
-            placeholder="Github"
-          />
-        </div>
-        <div className="my-4">
-          <label htmlFor="telegram">Telegram</label>
-          <input
-            id="telegram"
-            type="telegram"
-            name="telegram"
-            value={input.telegram}
-            onChange={handleChange}
-            className="w-full mt-2 py-2 px-4 border rounded"
-            placeholder="Telegram"
-          />
-        </div>
-        <div className="my-4">
-          <label htmlFor="facebook">Linkedin</label>
-          <input
-            id="linkedin"
-            type="linkedin"
-            name="linkedin"
-            value={input.linkedin}
-            onChange={handleChange}
-            className="w-full mt-2 py-2 px-4 border rounded"
-            placeholder="Linkedin"
-          />
-        </div>
-        <div className="my-4">
-          <label htmlFor="about">About</label>
-          <textarea
-            id="text"
-            type="text"
-            name="about"
-            onChange={handleChange}
-            value={input.about}
-            className="w-full mt-2 py-2 px-4 border rounded"
-            placeholder="About"
-            cols="30"
-            rows="10"
-          ></textarea>
-        </div>
-        <div className="my-4">
-          <label htmlFor="cv">CV</label>
-          <input
-            id="cv"
-            type="file"
-            name="cv"
-            className="w-full mt-2 py-2 px-4 border rounded"
-            onChange={handleChangeCv}
-            placeholder="CV"
-          />
-        </div>
-        <a
-          download
-          href={`${URL_IMAGE}/uploads/${input.cv}`}
-          className="text-blue-600 hover:underline"
-        >
-          Download CV
-        </a>
-        <div className="my-4">
-          <label htmlFor="picture">Picture</label>
-          <input
-            id="picture"
-            type="file"
-            name="picture"
-            onChange={handleChangePicture}
-            className="w-full mt-2 py-2 px-4 border rounded"
-            placeholder="Picture"
-          />
-        </div>
-        {previewImage ? (
-          <img src={previewImage} alt={input.name} className="w-full" />
-        ) : (
-          <img
-            src={`${URL_IMAGE}/uploads/${input.picture || "default.jpg"}`}
-            alt={input.name}
-            className="w-full"
-          />
-        )}
 
         <div className="my-4">
           <button
