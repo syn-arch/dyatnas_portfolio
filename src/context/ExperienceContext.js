@@ -14,6 +14,10 @@ export const ExperienceProvider = (props) => {
   const [fetchStatus, setFetchStatus] = useState(true);
   const [input, setInput] = useState({
     name: "",
+    description: "",
+    year: "",
+    order: "",
+    type: "",
   });
   const [error, setError] = useState({
     message: "",
@@ -27,6 +31,10 @@ export const ExperienceProvider = (props) => {
   const emptyInput = () => {
     setInput({
       name: "",
+      description: "",
+      year: "",
+      order: "",
+      type: "",
     });
   };
 

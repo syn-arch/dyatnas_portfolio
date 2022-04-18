@@ -1,7 +1,97 @@
-import React from "react";
+import axios from "axios";
+import React, { useContext, useEffect } from "react";
+import { ExperienceContext } from "../../../context/ExperienceContext";
+import { GlobalContext } from "../../../context/GlobalContext";
+import { Link } from "react-router-dom";
 
 function ExperienceIndex(props) {
-  return <div></div>;
+  const { URL } = useContext(GlobalContext);
+  const { state, handleFunction } = useContext(ExperienceContext);
+  const { experiences, setExperiences, fetchStatus, setFetchStatus } = state;
+  const { handleEdit, handleDelete } = handleFunction;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios.get(`${URL}/experiences`);
+      setExperiences(result.data.data);
+    };
+
+    if (fetchStatus) {
+      fetchData();
+      setFetchStatus(false);
+    }
+  }, [URL, fetchStatus, setExperiences, setFetchStatus]);
+
+  return (
+    <div className="relative overflow-x-auto mt-4 ml-4">
+      <Link
+        to="/admin/experiences/create"
+        className="bg-gray-400 text-white py-2 px-4 rounded mb-4 inline-block hover:bg-gray-500 float-right"
+      >
+        Create New Data
+      </Link>
+      <table className="w-full text-sm text-left shadow-md sm:rounded-lg">
+        <thead className="text-xs text-white uppercase bg-gray-300">
+          <tr>
+            <th scope="col" className="px-6 py-3">
+              No
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Name
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Description
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Year
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Order
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Type
+            </th>
+            <th scope="col" className="px-6 py-3  text-center">
+              Action
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {experiences.map((experience, index) => {
+            return (
+              <tr
+                key={experience.id}
+                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+              >
+                <td className="px-6 py-4">{index + 1}</td>
+                <td className="px-6 py-4">{experience.name}</td>
+                <td className="px-6 py-4">{experience.description}</td>
+                <td className="px-6 py-4">{experience.year}</td>
+                <td className="px-6 py-4">{experience.order}</td>
+                <td className="px-6 py-4">{experience.type}</td>
+                <td className="px-6 py-4 text-center">
+                  <button
+                    value={experience.id}
+                    onClick={handleEdit}
+                    className="font-medium text-blue-600 dark:text-blue-500 hover:underline mr-4"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    value={experience.id}
+                    onClick={handleDelete}
+                    className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
 }
 
 export default ExperienceIndex;
