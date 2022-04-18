@@ -14,141 +14,178 @@ import CategoryForm from "../pages/admin/category/CategoryForm";
 
 import PortfolioIndex from "../pages/admin/portfolio/PortfolioIndex";
 import PortfolioForm from "../pages/admin/portfolio/PortfolioForm";
+import { Navigate } from "react-router-dom";
+import Cookies from "js-cookie";
+
+function RequireAuth({ children }) {
+  const token = Cookies.get("token");
+  return token ? children : <Navigate to={"/login"} />;
+}
 
 const AdminRoutes = [
   {
-    key: "admin/dashboard",
+    key: "/dashboard",
     path: "/admin/dashboard",
     element: (
-      <AdminLayout>
-        <Dashboard />
-      </AdminLayout>
+      <RequireAuth>
+        <AdminLayout>
+          <Dashboard />
+        </AdminLayout>
+      </RequireAuth>
     ),
   },
   {
-    key: "admin/about",
+    key: "/about",
     path: "/admin/about",
     element: (
-      <AdminLayout>
-        <About />
-      </AdminLayout>
+      <RequireAuth>
+        <AdminLayout>
+          <About />
+        </AdminLayout>
+      </RequireAuth>
     ),
   },
   {
-    key: "admin/profile",
+    key: "/profile",
     path: "/admin/profile",
     element: (
-      <AdminLayout>
-        <Profile />
-      </AdminLayout>
+      <RequireAuth>
+        <AdminLayout>
+          <Profile />
+        </AdminLayout>
+      </RequireAuth>
     ),
   },
   {
-    key: "admin/skills",
+    key: "/skills",
     path: "/admin/skills",
     element: (
-      <AdminLayout>
-        <SkillIndex />
-      </AdminLayout>
+      <RequireAuth>
+        <AdminLayout>
+          <SkillIndex />
+        </AdminLayout>
+      </RequireAuth>
     ),
   },
   {
-    key: "admin/skills/create",
+    key: "/skills/create",
     path: "/admin/skills/create",
     element: (
-      <AdminLayout>
-        <SkillForm />
-      </AdminLayout>
+      <RequireAuth>
+        <AdminLayout>
+          <SkillForm />
+        </AdminLayout>
+      </RequireAuth>
     ),
   },
   {
-    key: "admin/skills/edit",
+    key: "/skills/edit",
     path: "/admin/skills/edit/:id",
     element: (
-      <AdminLayout>
-        <SkillForm />
-      </AdminLayout>
+      <RequireAuth>
+        <AdminLayout>
+          <SkillForm />
+        </AdminLayout>
+      </RequireAuth>
     ),
   },
   {
-    key: "admin/experiences",
+    key: "/experiences",
     path: "/admin/experiences",
     element: (
-      <AdminLayout>
-        <ExperienceIndex />
-      </AdminLayout>
+      <RequireAuth>
+        <AdminLayout>
+          <ExperienceIndex />
+        </AdminLayout>
+      </RequireAuth>
     ),
   },
   {
-    key: "admin/experiences/create",
+    key: "/experiences/create",
     path: "/admin/experiences/create",
     element: (
-      <AdminLayout>
-        <ExperienceForm />
-      </AdminLayout>
+      <RequireAuth>
+        <AdminLayout>
+          <ExperienceForm />
+        </AdminLayout>
+      </RequireAuth>
     ),
   },
   {
-    key: "admin/experiences/edit",
+    key: "/experiences/edit",
     path: "/admin/experiences/edit/:id",
     element: (
-      <AdminLayout>
-        <ExperienceForm />
-      </AdminLayout>
+      <RequireAuth>
+        <AdminLayout>
+          <ExperienceForm />
+        </AdminLayout>
+      </RequireAuth>
     ),
   },
   {
-    key: "admin/categories",
+    key: "/categories",
     path: "/admin/categories",
     element: (
-      <AdminLayout>
-        <CategoryIndex />
-      </AdminLayout>
+      <RequireAuth>
+        <AdminLayout>
+          <CategoryIndex />
+        </AdminLayout>
+      </RequireAuth>
     ),
   },
   {
-    key: "admin/categories/create",
+    key: "/categories/create",
     path: "/admin/categories/create",
     element: (
-      <AdminLayout>
-        <CategoryForm />
-      </AdminLayout>
+      <RequireAuth>
+        <AdminLayout>
+          <CategoryForm />
+        </AdminLayout>
+      </RequireAuth>
     ),
   },
   {
-    key: "admin/categories/edit",
+    key: "/categories/edit",
     path: "/admin/categories/edit/:id",
     element: (
-      <AdminLayout>
-        <CategoryForm />
-      </AdminLayout>
+      <RequireAuth>
+        <AdminLayout>
+          <CategoryForm />
+        </AdminLayout>
+      </RequireAuth>
     ),
   },
   {
-    key: "admin/portfolios",
+    key: "/portfolios",
     path: "/admin/portfolios",
     element: (
-      <AdminLayout>
-        <PortfolioIndex />
-      </AdminLayout>
+      <RequireAuth>
+        <AdminLayout>
+          <PortfolioIndex />
+        </AdminLayout>
+      </RequireAuth>
     ),
   },
   {
-    key: "admin/portfolios/create",
+    key: "/portfolios/create",
     path: "/admin/portfolios/create",
     element: (
-      <AdminLayout>
-        <PortfolioForm />
-      </AdminLayout>
+      <RequireAuth>
+        <AdminLayout>
+          <PortfolioForm />
+        </AdminLayout>
+      </RequireAuth>
     ),
   },
   {
-    key: "admin/portfolios/edit",
+    key: "/portfolios/edit",
     path: "/admin/portfolios/edit/:id",
     element: (
-      <AdminLayout>
-        <PortfolioForm />
-      </AdminLayout>
+      <RequireAuth>
+        <AdminLayout>
+          <PortfolioForm />
+        </AdminLayout>
+      </RequireAuth>
     ),
   },
 ];

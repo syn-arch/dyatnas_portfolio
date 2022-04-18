@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { routes } from "./Index";
+import HomeRoutes from "./HomeRoutes";
+import AdminRoutes from "./AdminRoutes";
 import { GlobalProvider } from "../context/GlobalContext";
 import { SkillProvider } from "../context/SkillContext";
 import { CategoryProvider } from "../context/CategoryContext";
@@ -16,9 +17,14 @@ function Main(props) {
             <ExperienceProvider>
               <PortfolioProvider>
                 <Routes>
-                  {routes.map((route) => {
+                  {HomeRoutes.map((route) => {
                     return <Route {...route} />;
                   })}
+                  <Route path="/admin">
+                    {AdminRoutes.map((route) => {
+                      return <Route {...route} />;
+                    })}
+                  </Route>
                   <Route path="*" element="404 Not Found" />
                 </Routes>
               </PortfolioProvider>

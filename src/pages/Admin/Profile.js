@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { GlobalContext } from "../../context/GlobalContext";
 import Cookies from "js-cookie";
+import swal from "sweetalert";
 
 function Profile(props) {
   const { URL, URL_IMAGE } = useContext(GlobalContext);
@@ -50,13 +51,14 @@ function Profile(props) {
           email: res.data.data.email,
           picture: res.data.data.picture,
         });
-        window.alert("Berhasil");
+        swal("Success", "data successfully updated", "success");
       })
       .catch((e) => {
         setError({
           message: e.response.data.message,
           errors: e.response.data.errors,
         });
+        swal("Failed", e.response.data.message, "error");
       });
   };
 
