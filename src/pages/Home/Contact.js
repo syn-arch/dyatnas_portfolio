@@ -28,7 +28,7 @@ function Contact(props) {
         <div className="mr-12">
           <h2 className="font-semibold">Connect With Me</h2>
           <ul className="mt-4">
-            <li className="mt-3">
+            <li className="mt-3 whitespace-nowrap">
               <img src={Fb} alt="facebook" className="w-6 h-6 inline-block" />
               <a
                 href="www.facebook.com/dy.vect"
@@ -40,7 +40,7 @@ function Contact(props) {
                 <span className="text-red-500">dy.vect</span>
               </a>
             </li>
-            <li className="mt-3">
+            <li className="mt-3 whitespace-nowrap">
               <img
                 src={Instagram}
                 alt="facebook"
@@ -56,7 +56,7 @@ function Contact(props) {
                 <span className="text-red-500">dyatnas</span>
               </a>
             </li>
-            <li className="mt-3">
+            <li className="mt-3 whitespace-nowrap">
               <img
                 src={Whatsapp}
                 alt="facebook"
@@ -72,7 +72,7 @@ function Contact(props) {
                 <span className="text-red-500">6283822623170</span>
               </a>
             </li>
-            <li className="mt-3">
+            <li className="mt-3 whitespace-nowrap">
               <img
                 src={Github}
                 alt="facebook"
@@ -88,7 +88,7 @@ function Contact(props) {
                 <span className="text-red-500">syn-arch</span>
               </a>
             </li>
-            <li className="mt-3">
+            <li className="mt-3 whitespace-nowrap">
               <img
                 src={Telegram}
                 alt="facebook"
@@ -104,7 +104,7 @@ function Contact(props) {
                 <span className="text-red-500">dyatnas</span>
               </a>
             </li>
-            <li className="mt-3">
+            <li className="mt-3 whitespace-nowrap">
               <img
                 src={Email}
                 alt="facebook"
