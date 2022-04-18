@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import Cookies from "js-cookie";
+import { GlobalContext } from "../../context/GlobalContext";
 
 function Navbar(props) {
+  const { URL_IMAGE } = useContext(GlobalContext);
+  const user = JSON.parse(Cookies.get("user"));
   return (
     <nav className="h-16 flex justify-end bg-white rounded p-2 shadow ml-4 items-center">
-      <span className="text-md mr-4">
-        {JSON.parse(Cookies.get("user")).name}
-      </span>
+      <span className="text-md mr-4">{user.name}</span>
       <img
-        src={JSON.parse(Cookies.get("user")).picture}
-        alt={JSON.parse(Cookies.get("user")).name}
+        src={URL_IMAGE + "/uploads/" + user.picture}
+        alt={user.name}
         className="w-12 h-12 rounded-full"
       />
     </nav>
