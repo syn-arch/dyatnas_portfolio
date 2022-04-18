@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { GlobalContext } from "./GlobalContext";
+import swal from "sweetalert";
 
 export const CategoryContext = createContext();
 
@@ -44,6 +45,11 @@ export const CategoryProvider = (props) => {
         })
         .then((e) => {
           setFetchStatus(true);
+          swal("Success", "data successfully inserted", "success");
+          setError({
+            message: "",
+            errors: [],
+          });
           navigate("/admin/categories");
         })
         .catch((e) => {
@@ -51,6 +57,7 @@ export const CategoryProvider = (props) => {
             message: e.response.data.message,
             errors: e.response.data.errors,
           });
+          swal("Failed", e.response.data.message, "error");
         });
     } else {
       axios
@@ -59,6 +66,11 @@ export const CategoryProvider = (props) => {
         })
         .then((e) => {
           setFetchStatus(true);
+          swal("Success", "data successfully updated", "success");
+          setError({
+            message: "",
+            errors: [],
+          });
           navigate("/admin/categories");
         })
         .catch((e) => {
@@ -66,6 +78,7 @@ export const CategoryProvider = (props) => {
             message: e.response.data.message,
             errors: e.response.data.errors,
           });
+          swal("Failed", e.response.data.message, "error");
         });
     }
 
@@ -75,13 +88,24 @@ export const CategoryProvider = (props) => {
 
   const handleDelete = (e) => {
     const id = e.target.value;
-    axios
-      .delete(`${URL}/categories/${id}`, {
-        headers: { Authorization: "Bearer " + Cookies.get("token") },
-      })
-      .then((e) => {
-        setFetchStatus(true);
-      });
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this data",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        axios
+          .delete(`${URL}/categories/${id}`, {
+            headers: { Authorization: "Bearer " + Cookies.get("token") },
+          })
+          .then((e) => {
+            setFetchStatus(true);
+          });
+        swal("Success", "data successfully deleted", "success");
+      }
+    });
   };
 
   let handleFunction = {

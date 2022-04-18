@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { GlobalContext } from "./GlobalContext";
+import swal from "sweetalert";
 
 export const SkillContext = createContext();
 
@@ -64,6 +65,11 @@ export const SkillProvider = (props) => {
         })
         .then((e) => {
           setFetchStatus(true);
+          swal("Success", "data successfully inserted", "success");
+          setError({
+            message: "",
+            errors: [],
+          });
           navigate("/admin/skills");
         })
         .catch((e) => {
@@ -71,6 +77,7 @@ export const SkillProvider = (props) => {
             message: e.response.data.message,
             errors: e.response.data.errors,
           });
+          swal("Failed", e.response.data.message, "error");
         });
     } else {
       const data = new FormData();
@@ -86,6 +93,11 @@ export const SkillProvider = (props) => {
         })
         .then((e) => {
           setFetchStatus(true);
+          swal("Success", "data successfully updated", "success");
+          setError({
+            message: "",
+            errors: [],
+          });
           navigate("/admin/skills");
         })
         .catch((e) => {
@@ -93,6 +105,7 @@ export const SkillProvider = (props) => {
             message: e.response.data.message,
             errors: e.response.data.errors,
           });
+          swal("Failed", e.response.data.message, "error");
         });
     }
 
@@ -102,15 +115,24 @@ export const SkillProvider = (props) => {
 
   const handleDelete = (e) => {
     const id = e.target.value;
-    axios
-      .delete(`${URL}/skills/${id}`, {
-        headers: {
-          Authorization: "Bearer " + Cookies.get("token"),
-        },
-      })
-      .then((e) => {
-        setFetchStatus(true);
-      });
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this data",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        axios
+          .delete(`${URL}/skills/${id}`, {
+            headers: { Authorization: "Bearer " + Cookies.get("token") },
+          })
+          .then((e) => {
+            setFetchStatus(true);
+          });
+        swal("Success", "data successfully deleted", "success");
+      }
+    });
   };
 
   let handleFunction = {

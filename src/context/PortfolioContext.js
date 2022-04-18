@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { GlobalContext } from "./GlobalContext";
+import swal from "sweetalert";
 
 export const PortfolioContext = createContext();
 
@@ -60,6 +61,11 @@ export const PortfolioProvider = (props) => {
         })
         .then((e) => {
           setFetchStatus(true);
+          swal("Success", "data successfully inserted", "success");
+          setError({
+            message: "",
+            errors: [],
+          });
           navigate("/admin/portfolios");
         })
         .catch((e) => {
@@ -67,6 +73,7 @@ export const PortfolioProvider = (props) => {
             message: e.response.data.message,
             errors: e.response.data.errors,
           });
+          swal("Failed", e.response.data.message, "error");
         });
     } else {
       const data = new FormData();
@@ -81,6 +88,11 @@ export const PortfolioProvider = (props) => {
         })
         .then((e) => {
           setFetchStatus(true);
+          swal("Success", "data successfully updated", "success");
+          setError({
+            message: "",
+            errors: [],
+          });
           navigate("/admin/portfolios");
         })
         .catch((e) => {
@@ -88,6 +100,7 @@ export const PortfolioProvider = (props) => {
             message: e.response.data.message,
             errors: e.response.data.errors,
           });
+          swal("Failed", e.response.data.message, "error");
         });
     }
 
@@ -97,13 +110,24 @@ export const PortfolioProvider = (props) => {
 
   const handleDelete = (e) => {
     const id = e.target.value;
-    axios
-      .delete(`${URL}/portfolios/${id}`, {
-        headers: { Authorization: "Bearer " + Cookies.get("token") },
-      })
-      .then((e) => {
-        setFetchStatus(true);
-      });
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this data",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        axios
+          .delete(`${URL}/portfolios/${id}`, {
+            headers: { Authorization: "Bearer " + Cookies.get("token") },
+          })
+          .then((e) => {
+            setFetchStatus(true);
+          });
+        swal("Success", "data successfully deleted", "success");
+      }
+    });
   };
 
   const handleChangePicture = (e) => {
