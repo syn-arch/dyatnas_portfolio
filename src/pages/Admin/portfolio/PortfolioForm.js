@@ -79,6 +79,7 @@ function PortfolioForm(props) {
             value={input.id_category}
             onChange={handleChange}
           >
+            <option value="">-- Select Type --</option>
             {categories.map((category, index) => {
               return (
                 <option key={index} value={category.id}>
@@ -133,6 +134,18 @@ function PortfolioForm(props) {
             placeholder="Tags"
             name="tags"
             value={input.tags}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="my-4">
+          <label htmlFor="link">Link</label>
+          <input
+            id="link"
+            type="link"
+            className="w-full mt-2 py-2 px-4 border rounded"
+            placeholder="Link"
+            name="link"
+            value={input.link}
             onChange={handleChange}
           />
         </div>

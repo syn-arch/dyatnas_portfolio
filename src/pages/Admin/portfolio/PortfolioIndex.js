@@ -51,6 +51,9 @@ function PortfolioIndex(props) {
             <th scope="col" className="px-6 py-3">
               Tags
             </th>
+            <th scope="col" className="px-6 py-3">
+              Link
+            </th>
             <th scope="col" className="px-6 py-3  text-center">
               Action
             </th>
@@ -75,6 +78,11 @@ function PortfolioIndex(props) {
                 </td>
                 <td className="px-6 py-4">{portfolio.description}</td>
                 <td className="px-6 py-4">{portfolio.tags}</td>
+                <td className="px-6 py-4">
+                  <a href={portfolio.link} rel="noreferrer" target="_blank">
+                    {portfolio.link}
+                  </a>
+                </td>
                 <td className="px-6 py-4 text-center">
                   <button
                     value={portfolio.id}

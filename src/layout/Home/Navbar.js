@@ -7,7 +7,10 @@ function Navbar(props) {
   return (
     <>
       <nav className="fixed flex justify-between px-10 py-5 w-full">
-        <Link to="/" className="font-bold text-2xl text-red-400">
+        <Link
+          to="/"
+          className="font-bold text-2xl text-red-400 tracking-widest"
+        >
           Dias
         </Link>
         <button

@@ -33,7 +33,7 @@ function Navbar(props) {
           </svg>
         </button>
         <div className="user whitespace-nowrap flex items-center">
-          <span className="text-md mr-4">{user.name}</span>
+          <span className="text-md mr-2">{user.name}</span>
           <img
             src={URL_IMAGE + "/uploads/" + user.picture}
             alt={user.name}

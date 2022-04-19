@@ -20,6 +20,7 @@ export const PortfolioProvider = (props) => {
     picture: "",
     description: "",
     tags: "",
+    link: "",
   });
   const [error, setError] = useState({
     message: "",
@@ -38,6 +39,7 @@ export const PortfolioProvider = (props) => {
       picture: "",
       description: "",
       tags: "",
+      link: "",
     });
   };
 
@@ -55,6 +57,7 @@ export const PortfolioProvider = (props) => {
       data.append("description", input.description);
       data.append("id_category", input.id_category);
       data.append("tags", input.tags);
+      data.append("link", input.link);
       axios
         .post(`${URL}/portfolios`, data, {
           headers: { Authorization: "Bearer " + Cookies.get("token") },
@@ -82,6 +85,7 @@ export const PortfolioProvider = (props) => {
       data.append("description", input.description);
       data.append("id_category", input.id_category);
       data.append("tags", input.tags);
+      data.append("link", input.link);
       axios
         .post(`${URL}/portfolios/${currentId}?_method=PUT`, data, {
           headers: { Authorization: "Bearer " + Cookies.get("token") },

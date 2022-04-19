@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 
 function Login(props) {
   const navigate = useNavigate();
@@ -34,6 +35,7 @@ function Login(props) {
           message: e.response.data.message,
           errors: e.response.data.errors,
         });
+        swal("Error", e.response.data.message, "error");
       });
   };
 

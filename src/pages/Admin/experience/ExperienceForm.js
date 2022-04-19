@@ -111,6 +111,7 @@ function ExperienceForm(props) {
             value={input.type}
             onChange={handleChange}
           >
+            <option value="">-- Select Type --</option>
             <option value="experience">experience</option>
             <option value="education">education</option>
             <option value="achievement">achievement</option>
