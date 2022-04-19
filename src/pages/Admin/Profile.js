@@ -37,6 +37,8 @@ function Profile(props) {
     data.append("name", input.name);
     data.append("email", input.email);
     data.append("picture", input.picture);
+    data.append("new_password", input.new_password);
+    data.append("confirm_new_password", input.confirm_new_password);
     axios
       .post(`${URL}/user?_method=PUT`, data, {
         headers: {
