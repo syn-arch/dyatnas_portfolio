@@ -6,7 +6,7 @@ function Navbar(props) {
 
   return (
     <>
-      <nav className="fixed flex justify-between px-10 py-5 w-full">
+      <nav className="fixed flex justify-between px-10 py-5 w-full z-10">
         <Link
           to="/"
           className="font-bold text-2xl text-red-400 tracking-widest"
