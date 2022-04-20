@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 
 import Fb from "../../img/fb.svg";
 import Whatsapp from "../../img/whatsapp.svg";
@@ -8,6 +9,26 @@ import Telegram from "../../img/telegram.svg";
 import Email from "../../img/email.svg";
 
 function Contact(props) {
+  const [captcha, setCaptcha] = useState({
+    verified: false,
+    value: "",
+  });
+
+  const site_key = "6Lf8LogfAAAAADK8d6RdkvBq9nHK0w4Xo45cSalJ";
+
+  const onChangeCaptcha = (value) => {
+    setCaptcha({
+      verified: true,
+      value: value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (captcha.verified) {
+      console.log(captcha);
+    }
+  };
   return (
     <div className="w-11/12 mx-auto">
       <h1
@@ -124,16 +145,16 @@ function Contact(props) {
         </div>
         <div>
           <h2 className="font-semibold mt-4 md:mt-0">Contact Me</h2>
-          <form action="" className="mt-3">
-            <div className="flex justify-between">
+          <form onSubmit={handleSubmit} className="mt-3">
+            <div className="flex justify-between flex-col md:flex-row">
               <input
                 type="text"
-                className="w-5/12 bg-gray-100 p-1 rounded-lg placeholder:text-sm"
+                className="w-full md:w-1/2 bg-gray-100 p-1 rounded-lg placeholder:text-sm md:mr-2"
                 placeholder="Your name"
               />
               <input
                 type="text"
-                className="w-1/2 bg-gray-100  p-1 rounded-lg placeholder:text-sm ml-3"
+                className="w-full md:w-1/2 bg-gray-100 p-1 mt-4 md:mt-0 rounded-lg placeholder:text-sm md:ml-2"
                 placeholder="yourmail@mail.com"
               />
             </div>
@@ -145,6 +166,7 @@ function Contact(props) {
               className="bg-gray-100  p-2 rounded-lg placeholder:text-sm w-full mt-4"
               placeholder="Your message"
             ></textarea>
+            <ReCAPTCHA sitekey={site_key} onChange={onChangeCaptcha} />
             <button
               type="submit"
               className="bg-gray-700 hover:bg-gray-600 text-white block w-full rounded mt-3 py-1"
