@@ -7,6 +7,7 @@
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.26.1",
+    "html-react-parser": "^1.4.11",
     "isotope-layout": "^3.0.6",
     "js-cookie": "^3.0.1",
     "react": "^18.0.0",

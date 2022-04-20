@@ -1,21 +1,33 @@
-import React from "react";
-import Me from "../../img/me.jpg";
+import React, { useContext, useEffect, useState } from "react";
+import { GlobalContext } from "../../context/GlobalContext";
+import axios from "axios";
+import parse from "html-react-parser";
 
 function About(props) {
+  const { URL, URL_IMAGE } = useContext(GlobalContext);
+  const [profile, setProfile] = useState({});
+
+  useEffect(() => {
+    axios.get(`${URL}/profile`).then((res) => {
+      setProfile(res.data.data);
+    });
+  }, [URL]);
   return (
     <>
       <div className="flex flex-col md:flex-row w-3/4 mx-auto">
-        <div className="mt-10 md:mt-40">
+        <div className="mt-24 md:mt-40">
           <div className="rounded-full w-64 h-64 border-8 border-gray-200 mx-auto">
             <img
-              src={Me}
+              src={`${URL_IMAGE}/uploads/${profile.picture || "default.jpg"}`}
               alt="me"
-              className="rounded-full w-60 h-60 border-8 border-gray-300"
+              className="rounded-full w-60 h-60 border-8 border-gray-300 object-cover"
             />
           </div>
           <div className="text-center">
-            <h1 className="font-bold text-gray-700 mt-4">ADIATNA SUKMANA</h1>
-            <span className="text-red-400">Web Developer</span>
+            <h1 className="font-bold text-gray-700 mt-4 uppercase">
+              {profile.name}
+            </h1>
+            <span className="text-red-400">{profile.profession}</span>
           </div>
         </div>
         <div className="mt-10 md:mt-40 mx-auto relative">
@@ -53,15 +65,7 @@ function About(props) {
             md:before:drop-shadow-[-8px_4px_5px_rgba(0,0,0,0.1)]
             bg-white shadow-lg p-5 md:ml-28 w-full md:w-10/12"
           >
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit vel
-              earum qui autem inventore illum obcaecati aperiam, praesentium
-              soluta facere cumque aspernatur voluptatibus sint delectus esse
-              alias quo hic iure. Lorem, ipsum dolor sit amet consectetur
-              adipisicing elit. Alias, ipsum eligendi velit vero saepe rerum,
-              provident, aut quod dolorem facere nam corporis. Temporibus
-              reiciendis ad distinctio non nesciunt excepturi inventore.
-            </p>
+            <p className="text-justify">{parse(profile.about || "")}</p>
           </div>
         </div>
         <div className="h-10"></div>

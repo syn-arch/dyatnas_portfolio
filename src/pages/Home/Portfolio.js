@@ -1,19 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { GlobalContext } from "../../context/GlobalContext";
+import axios from "axios";
 import Isotope from "isotope-layout";
 import OnImagesLoaded from "react-on-images-loaded";
-import Port1 from "../../img/1.png";
-import Port2 from "../../img/2.png";
-import Port3 from "../../img/3.png";
-import Port4 from "../../img/4.png";
-import Port5 from "../../img/5.png";
-import Port6 from "../../img/6.png";
 
 function Portfolio(props) {
+  const { URL, URL_IMAGE } = useContext(GlobalContext);
+  const [portfolios, setPortfolios] = useState([]);
+  const [categories, setCategories] = useState([]);
   const isotope = React.useRef();
   const [filterKey, setFilterKey] = useState("*");
   const [imagesLoaded, setImagesLoaded] = useState(false);
 
   useEffect(() => {
+    axios.get(`${URL}/portfolios`).then((result) => {
+      setPortfolios(result.data.data);
+    });
+
+    axios.get(`${URL}/categories`).then((result) => {
+      setCategories(result.data.data);
+    });
+
     if (imagesLoaded) {
       isotope.current = new Isotope(".filter-container", {
         itemSelector: ".filter-item",
@@ -23,7 +30,7 @@ function Portfolio(props) {
 
       return () => isotope.current.destroy();
     }
-  }, [imagesLoaded]);
+  }, [URL, imagesLoaded]);
 
   useEffect(() => {
     if (imagesLoaded) {
@@ -52,40 +59,29 @@ function Portfolio(props) {
         Portfolios
       </h1>
 
-      <ul className="flex my-4">
+      <ul className="flex my-4 flex-wrap">
         <li
           className={`mr-2 ${filterKey === "*" && "border-b border-b-black"}`}
         >
           <button onClick={handleFilterKeyChange("*")}>All</button>
         </li>
-        <li
-          className={`mr-2 ${
-            filterKey === "ui-ux" && "border-b border-b-black"
-          }`}
-        >
-          <button onClick={handleFilterKeyChange("ui-ux")}>UI / UX</button>
-        </li>
-        <li
-          className={`mr-2 ${
-            filterKey === "laravel" && "border-b border-b-black"
-          }`}
-        >
-          <button onClick={handleFilterKeyChange("laravel")}>Laravel</button>
-        </li>
-        <li
-          className={`mr-2 ${
-            filterKey === "mobile" && "border-b border-b-black"
-          }`}
-        >
-          <button onClick={handleFilterKeyChange("mobile")}>Mobile</button>
-        </li>
-        <li
-          className={`mr-2 ${
-            filterKey === "java" && "border-b border-b-black"
-          }`}
-        >
-          <button onClick={handleFilterKeyChange("java")}>Java</button>
-        </li>
+        {categories.map((category, index) => {
+          return (
+            <li
+              key={index}
+              className={`mr-2 ${
+                filterKey === category.name.replace(/ /g, "") &&
+                "border-b border-b-black"
+              }`}
+            >
+              <button
+                onClick={handleFilterKeyChange(category.name.replace(/ /g, ""))}
+              >
+                {category.name}
+              </button>
+            </li>
+          );
+        })}
       </ul>
 
       {!imagesLoaded && (
@@ -109,139 +105,45 @@ function Portfolio(props) {
         </div>
       )}
 
-      <OnImagesLoaded onLoaded={() => setImagesLoaded(true)} timeout={1000}>
-        <div
-          className="mt-4 filter-container"
-          style={{ opacity: imagesLoaded ? 1 : 0 }}
-        >
-          <div className="rounded p-2 mb-2 filter-item laravel w-full md:w-1/2 lg:w-2/6">
-            <div className="p-4 bg-white shadow-md">
-              <img src={Port1} alt="" className="w-full" />
-              <h2 className="mt-2 font-semibold">Nama Aplikasi</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat,
-                at.
-              </p>
-              <div className="flex mt-4 justify-start">
-                <div className="bg-red-400 p-2 text-white rounded-lg mx-1 text-xs">
-                  HTML
+      {portfolios.length > 0 && (
+        <OnImagesLoaded onLoaded={() => setImagesLoaded(true)} timeout={5000}>
+          <div
+            className="mt-4 filter-container"
+            style={{ opacity: imagesLoaded ? 1 : 0 }}
+          >
+            {portfolios.map((portfolio, index) => {
+              return (
+                <div
+                  key={index}
+                  className={`rounded p-2 mb-2 filter-item ${portfolio.category.name.replace(
+                    / /g,
+                    ""
+                  )} w-full md:w-1/2 lg:w-2/6`}
+                >
+                  <div className="p-4 bg-white shadow-md">
+                    <img
+                      src={`${URL_IMAGE}/uploads/${portfolio.picture}`}
+                      alt=""
+                      className="w-full"
+                    />
+                    <h2 className="mt-2 font-semibold">{portfolio.name}</h2>
+                    <p>{portfolio.description}</p>
+                    <div className="flex mt-4 justify-start">
+                      {portfolio.tags.split(",").map((tag) => {
+                        return (
+                          <div className="bg-red-400 p-2 text-white rounded-lg mx-1 text-xs">
+                            {tag}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
                 </div>
-                <div className="bg-red-400 p-2 text-white rounded-lg mx-1 text-xs">
-                  CSS
-                </div>
-                <div className="bg-red-400 p-2 text-white rounded-lg mx-1 text-xs">
-                  javascript
-                </div>
-              </div>
-            </div>
+              );
+            })}
           </div>
-          <div className="rounded p-2 mb-2 filter-item break-inside mobile w-full md:w-1/2 lg:w-2/6">
-            <div className="p-4 bg-white shadow-md">
-              <img src={Port2} alt="" className="w-full" />
-              <h2 className="mt-2 font-semibold">Nama Aplikasi</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat,
-                at.
-              </p>
-              <div className="flex mt-4 justify-start">
-                <div className="bg-red-400 p-2 text-white rounded-lg mx-1 text-xs">
-                  HTML
-                </div>
-                <div className="bg-red-400 p-2 text-white rounded-lg mx-1 text-xs">
-                  CSS
-                </div>
-                <div className="bg-red-400 p-2 text-white rounded-lg mx-1 text-xs">
-                  javascript
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="rounded p-2 mb-2 filter-item break-inside java w-full md:w-1/2 lg:w-2/6">
-            <div className="p-4 bg-white shadow-md">
-              <img src={Port3} alt="" className="w-full" />
-              <h2 className="mt-2 font-semibold">Nama Aplikasi</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat,
-                at.
-              </p>
-              <div className="flex mt-4 justify-start">
-                <div className="bg-red-400 p-2 text-white rounded-lg mx-1 text-xs">
-                  HTML
-                </div>
-                <div className="bg-red-400 p-2 text-white rounded-lg mx-1 text-xs">
-                  CSS
-                </div>
-                <div className="bg-red-400 p-2 text-white rounded-lg mx-1 text-xs">
-                  javascript
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="rounded p-2 mb-2 filter-item break-inside java w-full md:w-1/2 lg:w-2/6">
-            <div className="p-4 bg-white shadow-md">
-              <img src={Port4} alt="" className="w-full" />
-              <h2 className="mt-2 font-semibold">Nama Aplikasi</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat,
-                at.
-              </p>
-              <div className="flex mt-4 justify-start">
-                <div className="bg-red-400 p-2 text-white rounded-lg mx-1 text-xs">
-                  HTML
-                </div>
-                <div className="bg-red-400 p-2 text-white rounded-lg mx-1 text-xs">
-                  CSS
-                </div>
-                <div className="bg-red-400 p-2 text-white rounded-lg mx-1 text-xs">
-                  javascript
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="rounded p-2 mb-2 filter-item break-inside laravel w-full md:w-1/2 lg:w-2/6">
-            <div className="p-4 bg-white shadow-md">
-              <img src={Port5} alt="" className="w-full" />
-              <h2 className="mt-2 font-semibold">Nama Aplikasi</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat,
-                at.
-              </p>
-              <div className="flex mt-4 justify-start">
-                <div className="bg-red-400 p-2 text-white rounded-lg mx-1 text-xs">
-                  HTML
-                </div>
-                <div className="bg-red-400 p-2 text-white rounded-lg mx-1 text-xs">
-                  CSS
-                </div>
-                <div className="bg-red-400 p-2 text-white rounded-lg mx-1 text-xs">
-                  javascript
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="rounded p-2 mb-2 filter-item break-inside ui-ux w-full md:w-1/2 lg:w-2/6">
-            <div className="p-4 bg-white shadow-md">
-              <img src={Port6} alt="" className="w-full" />
-              <h2 className="mt-2 font-semibold">Nama Aplikasi</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat,
-                at.
-              </p>
-              <div className="flex mt-4 justify-start">
-                <div className="bg-red-400 p-2 text-white rounded-lg mx-1 text-xs">
-                  HTML
-                </div>
-                <div className="bg-red-400 p-2 text-white rounded-lg mx-1 text-xs">
-                  CSS
-                </div>
-                <div className="bg-red-400 p-2 text-white rounded-lg mx-1 text-xs">
-                  javascript
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </OnImagesLoaded>
+        </OnImagesLoaded>
+      )}
 
       <div className="h-10"></div>
     </div>
