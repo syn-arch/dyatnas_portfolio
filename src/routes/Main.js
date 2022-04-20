@@ -7,6 +7,7 @@ import { SkillProvider } from "../context/SkillContext";
 import { CategoryProvider } from "../context/CategoryContext";
 import { ExperienceProvider } from "../context/ExperienceContext";
 import { PortfolioProvider } from "../context/PortfolioContext";
+import NotFound from "../pages/NotFound";
 
 function Main(props) {
   return (
@@ -25,7 +26,7 @@ function Main(props) {
                       return <Route {...route} />;
                     })}
                   </Route>
-                  <Route path="*" element="404 Not Found" />
+                  <Route path="*" element={<NotFound />} />
                 </Routes>
               </PortfolioProvider>
             </ExperienceProvider>
