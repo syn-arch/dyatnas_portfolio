@@ -14,6 +14,7 @@ function Navbar(props) {
           Dias
         </Link>
         <button
+          aria-label="Menu"
           onClick={() => setIsOpen(true)}
           className="text-gray-800 hover:text-gray-300 inline-flex items-center justify-center p-2 rounded-md md:hidden"
         >

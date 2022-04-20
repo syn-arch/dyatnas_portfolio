@@ -9,6 +9,7 @@ function HomeLayout(props) {
         <div className="w-11/12 mx-auto">{props.children}</div>
       </div>
       <button
+        aria-label="scroll back to top"
         onClick={() => {
           window.scrollTo({
             top: 0,

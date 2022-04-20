@@ -44,7 +44,7 @@ function Home(props) {
             <div className="mt-10">
               <Link
                 to="/about"
-                className="py-2 px-16 bg-red-500 rounded-full text-white hover:bg-red-400 transition-all duration-300 ease-in-out"
+                className="py-2 px-16 bg-red-600 rounded-full text-white hover:bg-red-400 transition-all duration-300 ease-in-out"
               >
                 Tentang
               </Link>
@@ -55,13 +55,14 @@ function Home(props) {
                 target="_blank"
                 rel="noreferrer"
                 download
-                className="py-2 px-16 border-2 border-red-400 rounded-full text-gray-800 hover:bg-red-400 hover:text-white hover:border-red-400 transition-all duration-300 ease-in-out"
+                className="py-2 px-16 border-2 border-red-400 rounded-full text-gray-800 hover:bg-red-600 hover:text-white hover:border-red-400 transition-all duration-300 ease-in-out"
               >
                 Resume
               </a>
             </div>
             <div className="my-12 w-3/4 mx-auto md:w-full flex justify-evenly md:justify-start md:items-end h-40">
               <a
+                aria-label="facebook"
                 href={`https://fb.com/${profile.facebook}`}
                 target="_blank"
                 rel="noreferrer"
@@ -73,6 +74,7 @@ function Home(props) {
                 />
               </a>
               <a
+                aria-label="github"
                 href={`https://github.com/${profile.github}`}
                 target="_blank"
                 rel="noreferrer"
@@ -84,6 +86,7 @@ function Home(props) {
                 />
               </a>
               <a
+                aria-label="telegram"
                 href={`https://t.me/${profile.telegram}`}
                 target="_blank"
                 rel="noreferrer"
@@ -95,6 +98,7 @@ function Home(props) {
                 />
               </a>
               <a
+                aria-label="email"
                 href={`mailto:${profile.email}`}
                 target="_blank"
                 rel="noreferrer"
