@@ -106,7 +106,7 @@ function Portfolio(props) {
       )}
 
       {portfolios.length > 0 && (
-        <OnImagesLoaded onLoaded={() => setImagesLoaded(true)} timeout={5000}>
+        <OnImagesLoaded onLoaded={() => setImagesLoaded(true)} timeout={3000}>
           <div
             className="mt-4 filter-container"
             style={{ opacity: imagesLoaded ? 1 : 0 }}
@@ -114,7 +114,7 @@ function Portfolio(props) {
             {portfolios.map((portfolio, index) => {
               return (
                 <div
-                  key={index}
+                  key={portfolio.id}
                   className={`rounded p-2 mb-2 filter-item ${portfolio.category.name.replace(
                     / /g,
                     ""
@@ -131,12 +131,25 @@ function Portfolio(props) {
                     <div className="flex mt-4 justify-start">
                       {portfolio.tags.split(",").map((tag) => {
                         return (
-                          <div className="bg-red-400 p-2 text-white rounded-lg mx-1 text-xs">
+                          <div
+                            key={tag}
+                            className="bg-red-400 p-2 text-white rounded-lg mx-1 text-xs"
+                          >
                             {tag}
                           </div>
                         );
                       })}
                     </div>
+                    <hr className="my-4" />
+                    <span>Link : </span>
+                    <a
+                      href={portfolio.link}
+                      rel="noreferrer"
+                      target="_blank"
+                      className="text-blue-500 hover:underline"
+                    >
+                      {portfolio.link}
+                    </a>
                   </div>
                 </div>
               );
