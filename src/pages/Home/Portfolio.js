@@ -96,7 +96,7 @@ function Portfolio(props) {
         )}
 
         {portfolios.length > 0 && (
-          <OnImagesLoaded onLoaded={() => setImagesLoaded(true)} timeout={7000}>
+          <OnImagesLoaded onLoaded={() => setImagesLoaded(true)} timeout={4000}>
             <div
               className="mt-4 filter-container"
               style={{ display: imagesLoaded ? "block" : "none" }}

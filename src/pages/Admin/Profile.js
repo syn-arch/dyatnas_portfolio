@@ -73,7 +73,7 @@ function Profile(props) {
         picture: res.data.data.picture,
       });
     });
-  }, [URL]);
+  }, [URL, input]);
 
   return (
     <div className="bg-white rounded shadow p-4 sm:ml-4 mt-4">

@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
+import { GlobalContext } from "../../context/GlobalContext";
 
 function Login(props) {
+  const { URL_IMAGE } = useContext(GlobalContext);
   const navigate = useNavigate();
   const [input, setInput] = useState({
     email: "",
@@ -24,7 +26,7 @@ function Login(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:8000/api/auth/login", input)
+      .post(`${URL_IMAGE}/auth/login`, input)
       .then((res) => {
         Cookies.set("token", res.data.access_token);
         Cookies.set("user", JSON.stringify(res.data.user));

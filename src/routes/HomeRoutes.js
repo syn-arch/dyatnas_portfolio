@@ -1,11 +1,11 @@
-import HomeLayout from "../layout/home/HomeLayout";
-import Home from "../pages/home/Home";
-import About from "../pages/home/About";
-import Skill from "../pages/home/Skill";
-import Experience from "../pages/home/Experience";
-import Portfolio from "../pages/home/Portfolio";
-import Contact from "../pages/home/Contact";
-import Login from "../pages/home/Login";
+import HomeLayout from "../layout/Home/HomeLayout";
+import Home from "../pages/Home/Home";
+import About from "../pages/Home/About";
+import Skill from "../pages/Home/Skill";
+import Experience from "../pages/Home/Experience";
+import Portfolio from "../pages/Home/Portfolio";
+import Contact from "../pages/Home/Contact";
+import Login from "../pages/Home/Login";
 
 const HomeRoutes = [
   {

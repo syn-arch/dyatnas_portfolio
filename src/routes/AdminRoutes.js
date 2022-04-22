@@ -1,19 +1,19 @@
-import AdminLayout from "../layout/admin/AdminLayout";
-import Dashboard from "../pages/admin/Dashboard";
-import About from "../pages/admin/About";
-import Profile from "../pages/admin/Profile";
+import AdminLayout from "../layout/Admin/AdminLayout";
+import Dashboard from "../pages/Admin/Dashboard";
+import About from "../pages/Admin/About";
+import Profile from "../pages/Admin/Profile";
 
-import SkillIndex from "../pages/admin/skill/SkillIndex";
-import SkillForm from "../pages/admin/skill/SkillForm";
+import SkillIndex from "../pages/Admin/skill/SkillIndex";
+import SkillForm from "../pages/Admin/skill/SkillForm";
 
-import ExperienceIndex from "../pages/admin/experience/ExperienceIndex";
-import ExperienceForm from "../pages/admin/experience/ExperienceForm";
+import ExperienceIndex from "../pages/Admin/experience/ExperienceIndex";
+import ExperienceForm from "../pages/Admin/experience/ExperienceForm";
 
-import CategoryIndex from "../pages/admin/category/CategoryIndex";
-import CategoryForm from "../pages/admin/category/CategoryForm";
+import CategoryIndex from "../pages/Admin/category/CategoryIndex";
+import CategoryForm from "../pages/Admin/category/CategoryForm";
 
-import PortfolioIndex from "../pages/admin/portfolio/PortfolioIndex";
-import PortfolioForm from "../pages/admin/portfolio/PortfolioForm";
+import PortfolioIndex from "../pages/Admin/portfolio/PortfolioIndex";
+import PortfolioForm from "../pages/Admin/portfolio/PortfolioForm";
 import { Navigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
