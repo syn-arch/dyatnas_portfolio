@@ -26,7 +26,7 @@ function Login(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(`${URL_IMAGE}/auth/login`, input)
+      .post(`${URL_IMAGE}/api/auth/login`, input)
       .then((res) => {
         Cookies.set("token", res.data.access_token);
         Cookies.set("user", JSON.stringify(res.data.user));
